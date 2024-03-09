@@ -12,7 +12,7 @@ let jokers = [
   {
     name: "Jester",
     text: [
-      "{C:chips,s:1.1}+50{} Chips"
+      "{C:chips,s:1.1}+40{} Chips"
     ],
     image_url: "assets/1x/j_mf_jester.png",
     rarity: "Common"

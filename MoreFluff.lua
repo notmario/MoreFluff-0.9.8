@@ -85,7 +85,7 @@ function SMODS.INIT.MoreFluff()
         mf_jester = {
             name = "Jester",
             text = {
-                "{C:chips,s:1.1}+50{} Chips"
+                "{C:chips,s:1.1}+40{} Chips"
             }
         },
         mf_lollipop = {
@@ -474,8 +474,8 @@ function SMODS.INIT.MoreFluff()
     SMODS.Jokers.j_mf_jester.calculate = function(self, context)
         if SMODS.end_calculate_context(context) then
             return {
-                message = localize{type='variable',key='a_chips',vars={50}},
-                chip_mod = 50, 
+                message = localize{type='variable',key='a_chips',vars={40}},
+                chip_mod = 40, 
                 colour = G.C.CHIPS
             }
         end
