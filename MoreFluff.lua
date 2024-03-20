@@ -717,7 +717,7 @@ function SMODS.INIT.MoreFluff()
     SMODS.Jokers.j_mf_basepaulcard.calculate = function(self, context)
         if SMODS.end_calculate_context(context) then
             -- hack. if paul support is added then incorporate that
-            if string.find(string.lower(love.filesystem.getUserDirectory()), "paul") then
+            if string.find(string.lower(G.PROFILES[G.SETTINGS.profile].name), "paul") then
                 return {
                     message = localize{type='variable',key='a_xmult',vars={12.5}},
                     Xmult_mod = 12.5,
@@ -1245,57 +1245,56 @@ function SMODS.INIT.MoreFluff()
         end
     end
 
-    -- -- challenge for testing.
-    -- local challenges = G.CHALLENGES
-	-- G.localization.misc.challenge_names["c_mod_morefluff_testing"] = "testing challenge"
+    -- challenge for testing.
+    local challenges = G.CHALLENGES
+	G.localization.misc.challenge_names["c_mod_morefluff_testing"] = "testing challenge"
     
-    -- table.insert(G.CHALLENGES,#G.CHALLENGES+1,{
-    --     name = 'testing challenge',
-    --     id = 'c_mod_morefluff_testing',
-    --     rules = {
-    --         custom = {
-    --         },
-    --         modifiers = {
-    --             {id = 'dollars', value = 9999},
-    --             {id = 'discards', value = 9999},
-    --             {id = 'hands', value = 9999},
-    --             {id = 'reroll_cost', value = -9999},
-    --             {id = 'joker_slots', value = 9999},
-    --             {id = 'consumable_slots', value = 9999},
-    --             {id = 'hand_size', value = 8},
-    --         }
-    --     },
-    --     jokers = {
-    --         {id = 'j_mf_recycling'},
-    --         {id = 'j_mf_recycling'},
-    --     },
-    --     consumeables = {
-    --     },
-    --     vouchers = {
-    --     },
-    --     deck = {
-    --         --enhancement = 'm_glass',
-    --         --edition = 'foil',
-    --         --gold_seal = true,
-    --         --yes_ranks = {['3'] = true,T = true},
-    --         --no_ranks = {['4'] = true},
-    --         --yes_suits = {S=true},
-    --         --no_suits = {D=true},
-    --         -- cards = {},
-    --         type = 'Challenge Deck'
-    --     },
-    --     restrictions = {
-    --         banned_cards = {
-    --         },
-    --         banned_tags = {
-    --             -- {id = 'tag_garbage'},
-    --             -- {id = 'tag_handy'},
-    --         },
-    --         banned_other = {
+    table.insert(G.CHALLENGES,#G.CHALLENGES+1,{
+        name = 'testing challenge',
+        id = 'c_mod_morefluff_testing',
+        rules = {
+            custom = {
+            },
+            modifiers = {
+                {id = 'dollars', value = 9999},
+                {id = 'discards', value = 9999},
+                {id = 'hands', value = 9999},
+                {id = 'reroll_cost', value = -9999},
+                {id = 'joker_slots', value = 9999},
+                {id = 'consumable_slots', value = 9999},
+                {id = 'hand_size', value = 8},
+            }
+        },
+        jokers = {
+            {id = 'j_mf_basepaulcard'},
+        },
+        consumeables = {
+        },
+        vouchers = {
+        },
+        deck = {
+            --enhancement = 'm_glass',
+            --edition = 'foil',
+            --gold_seal = true,
+            --yes_ranks = {['3'] = true,T = true},
+            --no_ranks = {['4'] = true},
+            --yes_suits = {S=true},
+            --no_suits = {D=true},
+            -- cards = {},
+            type = 'Challenge Deck'
+        },
+        restrictions = {
+            banned_cards = {
+            },
+            banned_tags = {
+                -- {id = 'tag_garbage'},
+                -- {id = 'tag_handy'},
+            },
+            banned_other = {
 
-    --         }
-    --     }
-    -- })
+            }
+        }
+    })
 end
 
 --- the good shit ---
