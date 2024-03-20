@@ -1,12 +1,54 @@
 let jokers = [
   {
+    name: "Balatro Mods (Working 2024)",
+    text: [
+      "If {C:attention}first hand{} of round",
+      "has only {C:attention}1{} card, spend",
+      "{C:attention}$2{} to give it a",
+      "random {C:attention}Enhancement{}",
+    ],
+    image_url: "assets/1x/j_mf_balatromods.png",
+    rarity: "Common"
+  },
+  {
     name: "Basepaul Card",
     text: [
-      "{X:mult,C:white} X1.2{} Mult. {X:mult,C:white} X12{} Mult",
+      "{X:mult,C:white} X1.25{} Mult. {X:mult,C:white} X12.5{} Mult",
       "instead for {C:red}Paul{}",
       "{C:inactive}(Who's Paul?)"
     ],
     image_url: "assets/1x/j_mf_basepaulcard.png",
+    rarity: "Common"
+  },
+  {
+    name: "Clownfish",
+    text: [
+      "{C:attention}Enhanced{} cards",
+      "score {C:chips}+10{} more Chips",
+      "and {C:mult}+4{} more Mult",
+      "when scored"
+    ],
+    image_url: "assets/1x/j_mf_clownfish.png",
+    rarity: "Common"
+  },
+  {
+    name: "Expansion Pack",
+    text: [
+      "When {C:attention}Blind{} is selected,",
+      "create {C:attention}1 {C:dark_edition}modded{C:attention} Joker",
+      "{C:inactive}(Must have room)"
+    ],
+    image_url: "assets/1x/j_mf_expansionpack.png",
+    rarity: "Common"
+  },
+  {
+    name: "Hollow Joker",
+    text: [
+      "{C:attention}-1{} hand size",
+      "{C:mult}+10{} Mult per hand",
+      "size below {C:attention}9"
+    ],
+    image_url: "assets/1x/j_mf_hollow.png",
     rarity: "Common"
   },
   {
@@ -44,9 +86,19 @@ let jokers = [
       "played numbered card",
       "that is a digit of",
       "your current money",
-      "(Ace = 1, 10 = 0)"
+      "{C:inactive}(Ace = 1, 10 = 0)"
     ],
     image_url: "assets/1x/j_mf_moneyprinter.png",
+    rarity: "Common"
+  },
+  {
+    name: "MS Paint Joker",
+    text: [
+      "{C:attention}+4{} hand size",
+      "for the first hand",
+      "of each blind"
+    ],
+    image_url: "assets/1x/j_mf_mspaint.png",
     rarity: "Common"
   },
   {
@@ -56,6 +108,16 @@ let jokers = [
       "{C:inactive}({C:attention}$${C:inactive} is your current money)"
     ],
     image_url: "assets/1x/j_mf_spiraljoker.png",
+    rarity: "Common"
+  },
+  {
+    name: "Treasure Map",
+    text: [
+      "After {C:attention}3{} rounds,",
+      "sell this card to",
+      "earn {C:money}$18{}",
+    ],
+    image_url: "assets/1x/j_mf_treasuremap.png",
     rarity: "Common"
   },
   {
@@ -90,6 +152,15 @@ let jokers = [
     rarity: "Uncommon"
   },
   {
+    name: "Huge Joker",
+    text: [
+      "{X:red,C:white} X3{} Mult,",
+      "{C:attention}-2{} hand size"
+    ],
+    image_url: "assets/jimbo.png",
+    rarity: "Uncommon"
+  },
+  {
     name: "Impostor",
     text: [
       "{X:mult,C:white} X2{} Mult if the",
@@ -97,6 +168,50 @@ let jokers = [
       "exactly one {C:red}red{} card"
     ],
     image_url: "assets/1x/j_mf_impostor.png",
+    rarity: "Uncommon"
+  },
+  {
+    name: "I Sip Toner Soup",
+    text: [
+      "Create a {C:tarot}Tarot{} card",
+      "when a hand is played",
+      "Destroyed when blind",
+      "is defeated",
+      "{C:inactive}(Must have room)"
+    ],
+    image_url: "assets/1x/j_mf_tonersoup.png",
+    rarity: "Uncommon"
+  },
+  {
+    name: "Miner",
+    text: [
+      "Gain a {C:green}D6 Tag{}",
+      "when {C:attention}Boss Blind",
+      "is selected",
+    ],
+    image_url: "assets/1x/j_mf_miner.png",
+    rarity: "Uncommon"
+  },
+  {
+    name: "Recycling",
+    text: [
+      "Create a random {C:planet}Planet{}",
+      "or {C:tarot}Tarot{} card",
+      "when any {C:attention}Booster{}",
+      "{C:attention}Pack{} is skipped",
+      "{C:inactive}(Must have room)",
+    ],
+    image_url: "assets/1x/j_mf_recycling.png",
+    rarity: "Uncommon"
+  },
+  {
+    name: "Seal the Deal",
+    text: [
+      "After you play a winning hand,",
+      "add a random {C:attention}Seal{} to",
+      "one of the played cards",
+    ],
+    image_url: "assets/1x/j_mf_sealthedeal.png",
     rarity: "Uncommon"
   },
   {
@@ -108,6 +223,36 @@ let jokers = [
     ],
     image_url: "assets/1x/j_mf_stylemeter.png",
     rarity: "Uncommon"
+  },
+  {
+    name: "Teacup",
+    text: [
+      "Upgrade the level of",
+      "each {C:attention}played hand{}",
+      "for the next {C:attention}4{} hands",
+    ],
+    image_url: "assets/1x/j_mf_teacup.png",
+    rarity: "Uncommon"
+  },
+  {
+    name: "Whiteboard",
+    text: [
+      "{X:red,C:white} X2{} Mult for each",
+      "empty hand space",
+      "after {C:attention}3{} cards"
+    ],
+    image_url: "assets/1x/j_mf_whiteboard.png",
+    rarity: "Uncommon"
+  },
+  {
+    name: "5D Joker with Multiverse Time Travel",
+    text: [
+      "{C:attention}-1{} Ante and is destroyed if",
+      "you defeat the {C:attention}Blind",
+      "by {C:attention}10x{} or more"
+    ],
+    image_url: "assets/1x/j_mf_fived.png",
+    rarity: "Rare"
   },
   {
     name: "Blood Pact",
@@ -128,6 +273,17 @@ let jokers = [
       "{C:inactive}(Sells for $1)"
     ],
     image_url: "assets/1x/j_mf_glitterbomb.png",
+    rarity: "Rare"
+  },
+  {
+    name: "Particle Accelerator",
+    text: [
+      "Gains {X:mult,C:white} X1{} Mult if played",
+      "hand has only {C:attention}1{} card,",
+      "otherwise gives {X:mult,C:white} X1{} Mult",
+      "and resets to {X:mult,C:white} X1{} Mult"
+    ],
+    image_url: "assets/1x/j_mf_particleaccelerator.png",
     rarity: "Rare"
   },
   {
@@ -180,8 +336,9 @@ let cols = {
   VOUCHER: "#cb724c",
   BOOSTER: "#646eb7",
   EDITION: "#ffffff",
-  DARK_EDITION: "#000000",
+  DARK_EDITION: "#5d5dff",
   ETERNAL: "#c75985",
+  INACTIVE: "#ffffff99",
   DYN_UI: {
     MAIN: "#374244",
     DARK: "#374244",
@@ -272,6 +429,11 @@ for (let joker of jokers) {
     <h4 class="rarity" style="background-color: ${rarities[joker.rarity]}">${joker.rarity}</h4>
     <div class="text">${joker.text}</div>
   `;
+  if (joker.name == "Huge Joker") {
+    joker_div.classList.add("hugejoker");
+  }
 
   jokers_div.appendChild(joker_div);
 }
+
+document.querySelector(".jokercount").innerHTML = document.querySelector(".jokercount").innerHTML.replace("{{count}}", jokers.length);

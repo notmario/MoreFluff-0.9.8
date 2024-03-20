@@ -30,7 +30,7 @@ main {
   text-align: center;
   color: white;
   padding: 1rem;
-  width: min(60rem, 100%);
+  width: min(90rem, 100%);
   margin: 1rem auto;
   font-size: 1.5rem;
 }
@@ -62,6 +62,9 @@ h1 {
 .joker img {
   height: 190px;
   image-rendering: pixelated;
+}
+.joker.hugejoker img {
+  height: 285px;
 }
 
 #download {
