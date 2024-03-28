@@ -7,6 +7,33 @@
 ----------------------------------------------
 ------------MOD CODE -------------------------
 
+--Support of custom seals--
+
+local config = {
+    black = false,
+    silver = false,
+    green = false
+}
+
+
+local seals = {
+    "Gold",
+    "Red",
+    "Blue",
+    "Purple"
+}
+
+if config.black then
+    table.insert(seals, "Black")
+end 
+if config.green then
+    table.insert(seals, "Green")
+end
+if config.silver then
+    table.insert(seals, "Silver")
+end
+
+
 function SMODS.INIT.MoreFluff()
 
     sendDebugMessage("morefluff incorporated")
@@ -889,57 +916,80 @@ function SMODS.INIT.MoreFluff()
     end
     
     SMODS.Jokers.j_mf_sealthedeal.calculate = function(self, context)
-        if context.after and G.GAME.chips + hand_chips * mult > G.GAME.blind.chips then
-            local unsealed = {}
-            for k, v in ipairs(context.full_hand) do
-                if not v.seal then
-                    unsealed[#unsealed+1] = v
+    if context.before and G.GAME.chips + hand_chips * mult > G.GAME.blind.chips then
+        local unsealed = {}
+        for k, v in ipairs(context.full_hand) do
+            if not v.seal then
+                unsealed[#unsealed+1] = v
+            end
+        end
+        if #unsealed > 0 then
+            local conv_card = pseudorandom_element(unsealed, pseudoseed('seal_the_deal_card'))
+            local seal = ""
+            local seal_type = pseudorandom(pseudoseed('seal_the_deal_seal'))
+            local interval = 1 / #seals
+
+            for i = 1, #seals do
+                if seal_type > (interval * i ) then
+                    index = i + 1
+                else
+                    break
                 end
             end
-            if #unsealed > 0 then
-                local conv_card = pseudorandom_element(unsealed, pseudoseed('seal_the_deal_card'))
-                local seal = ""
-                local seal_type = pseudorandom(pseudoseed('seal_the_deal_seal'))
-                if seal_type > 0.75 then seal = 'Red'
-                elseif seal_type > 0.5 then seal = 'Blue'
-                elseif seal_type > 0.25 then seal = 'Gold'
-                else seal = 'Purple' end
+            seal = seals[index]
 
-                G.E_MANAGER:add_event(Event({func = function()
-                    play_sound('tarot1')
-                    self:juice_up(0.3, 0.5)
-                    return true end }))
-                
-                G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
-                    conv_card:set_seal(seal, nil, true)
-                    return true end }))
+            G.E_MANAGER:add_event(Event({func = function()
+                play_sound('tarot1')
+                self:juice_up(0.3, 0.5)
+                return true end }))
+            
+            G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
+                conv_card:set_seal(seal, nil, true)
+                return true end }))
 
-                return {
-                    message = "Sealed!",
-                    card = card
-                }
-            end
+            return {
+                message = "Sealed!",
+                card = card
+            }
         end
     end
     
     SMODS.Jokers.j_mf_particleaccelerator.calculate = function(self, context)
-        if context.after then
+        if context.before then
             if #context.full_hand == 1 then
                 self.ability.x_mult = self.ability.x_mult + 1
                 return {
-                    message = localize{type='variable',key='a_xmult',vars={self.ability.x_mult}},
+                    message = localize{
+                        type='variable',
+                        key='a_xmult',
+                        vars={
+                            self.ability.x_mult
+                        }
+                    },
                 }
             else
                 self.ability.x_mult = 1
                 return {
-                    message = localize{type='variable',key='a_xmult',vars={1}},
+                    message = localize{
+                        type='variable',
+                        key='a_xmult',
+                        vars={
+                            1
+                        }
+                    },
                 }
             end
         end
         if SMODS.end_calculate_context(context) then
             if #context.full_hand ~= 1 then
                 return {
-                    message = localize{type='variable',key='a_xmult',vars={self.ability.x_mult}},
+                    message = localize{
+                        type='variable',
+                        key='a_xmult',
+                        vars={
+                            self.ability.x_mult
+                        }
+                    },
                     Xmult_mod = self.ability.x_mult,
                 }
             end
@@ -1247,7 +1297,7 @@ function SMODS.INIT.MoreFluff()
 
     -- -- challenge for testing.
     -- local challenges = G.CHALLENGES
-	-- G.localization.misc.challenge_names["c_mod_morefluff_testing"] = "testing challenge"
+    -- G.localization.misc.challenge_names["c_mod_morefluff_testing"] = "testing challenge"
     
     -- table.insert(G.CHALLENGES,#G.CHALLENGES+1,{
     --     name = 'testing challenge',
