@@ -896,7 +896,7 @@ function SMODS.INIT.MoreFluff()
     end
     
     SMODS.Jokers.j_mf_moneyprinter.calculate = function(self, context)
-        if context.after and not context.blueprint then
+        if context.before and not context.blueprint then
             local total_money = 0
             local values = G.GAME.dollars..""
             for k, v in ipairs(context.full_hand) do
