@@ -1,5 +1,16 @@
 let jokers = [
   {
+    name: "Bad Legal Defence",
+    text: [
+      "Create a {C:attention}Death{} {C:tarot}Tarot{}",
+      "when {C:attention}Boss Blind{}",
+      "is selected",
+      "{C:inactive}(Must have room)"
+    ],
+    image_url: "assets/1x/j_mf_leagueoflegends.png",
+    rarity: "Common"
+  },
+  {
     name: "Balatro Mods (Working 2024)",
     text: [
       "If {C:attention}first hand{} of round",
@@ -29,6 +40,16 @@ let jokers = [
       "when scored"
     ],
     image_url: "assets/1x/j_mf_clownfish.png",
+    rarity: "Common"
+  },
+  {
+    name: "Coupon Catalogue",
+    text: [
+      "{C:mult}+10{} Mult for each",
+      "{C:attention}Voucher{} purchased",
+      "this run"
+    ],
+    image_url: "assets/1x/j_mf_couponcatalogue.png",
     rarity: "Common"
   },
   {
@@ -102,6 +123,23 @@ let jokers = [
     rarity: "Common"
   },
   {
+    name: "Philosophcal Joker",
+    text: [
+      "{C:dark_edition}+1{} Joker Slot"
+    ],
+    image_url: "assets/1x/j_mf_pipe.png",
+    rarity: "Common"
+  },
+  {
+    name: "Simplified Joker",
+    text: [
+      "Other {C:blue}Common{} Jokers",
+      "each give {C:mult}+4{} Mult",
+    ],
+    image_url: "assets/1x/j_mf_simplified.png",
+    rarity: "Common"
+  },
+  {
     name: "Spiral Joker",
     text: [
       "{C:mult}+(10+7cos(pi/8 x {C:attention}$${C:mult})){} Mult",
@@ -121,6 +159,17 @@ let jokers = [
     rarity: "Common"
   },
   {
+    name: "Ace Up The Sleeve",
+    text: [
+      "Add a random {C:attention}Enhanced",
+      "{C:attention}Ace{} to your hand",
+      "when you have {C:blue}1{}",
+      "hand left"
+    ],
+    image_url: "assets/1x/j_mf_ace.png",
+    rarity: "Uncommon"
+  },
+  {
     name: "Box of Hands",
     text: [
       "Sell this card to gain {C:blue}5{} hands",
@@ -128,6 +177,26 @@ let jokers = [
       "{C:inactive}(No effect outside of a round)"
     ],
     image_url: "assets/1x/j_mf_boxofhands.png",
+    rarity: "Uncommon"
+  },
+  {
+    name: "Black Market",
+    text: [
+      "When {C:attention}Boss Blind{}",
+      "is selected, spend {C:attention}$10",
+      "to summon an {C:spectral}Ankh{} card"
+    ],
+    image_url: "assets/1x/j_mf_blackmarket.png",
+    rarity: "Uncommon"
+  },
+  {
+    name: "Blasphemy",
+    text: [
+      "{X:red,C:white} X4{} Mult,",
+      "{C:blue}-9999{} hands",
+      "when hand is played"
+    ],
+    image_url: "assets/1x/j_mf_blasphemy.png",
     rarity: "Uncommon"
   },
   {
@@ -139,6 +208,25 @@ let jokers = [
       "its sell value to these {C:blue}Chips"
     ],
     image_url: "assets/1x/j_mf_brainrot.png",
+    rarity: "Uncommon"
+  },
+  {
+    name: "Globe",
+    text: [
+      "Create a {C:planet}Planet{} card",
+      "when you {C:attention}reroll{} in the shop",
+    ],
+    image_url: "assets/1x/j_mf_globe.png",
+    rarity: "Uncommon"
+  },
+  {
+    name: "Golden Carrot",
+    text: [
+      "Earn {C:money}$10{} at",
+      "end of round",
+      "{C:money}-$1{} per hand played"
+    ],
+    image_url: "assets/1x/j_mf_goldencarrot.png",
     rarity: "Uncommon"
   },
   {
@@ -265,14 +353,43 @@ let jokers = [
     rarity: "Rare"
   },
   {
+    name: "Bowling Ball",
+    text: [
+      "{C:chips}+10{} Chips per",
+      "consecutive hand",
+      "that scores a {C:attention}3{}"
+    ],
+    image_url: "assets/1x/j_mf_bowlingball.png",
+    rarity: "Rare"
+  },
+  {
+    name: "Flesh Prison",
+    text: [
+      "{C:red}X2{} {C:attention}Boss Blind{} size",
+      "Destroyed and creates a",
+      "{C:dark_edition}Negative{} {C:spectral}Soul{} card when a",
+      "{C:attention}Boss Blind{} is defeated"
+    ],
+    image_url: "assets/1x/j_mf_fleshprison.png",
+    rarity: "Rare"
+  },
+  {
     name: "Glitter Bomb",
     text: [
       "Sell this card to",
       "give all held cards",
-      "a random {C:attention}Enhancement{}",
-      "{C:inactive}(Sells for $1)"
+      "a random {C:attention}Enhancement{}"
     ],
     image_url: "assets/1x/j_mf_glitterbomb.png",
+    rarity: "Rare"
+  },
+  {
+    name: "Jankman",
+    text: [
+      "Other {C:dark_edition}Modded{} Jokers",
+      "each give {X:mult,C:white} X1.5{} Mult",
+    ],
+    image_url: "assets/1x/j_mf_jankman.png",
     rarity: "Rare"
   },
   {
@@ -287,6 +404,16 @@ let jokers = [
     rarity: "Rare"
   },
   {
+    name: "Pixel Joker",
+    text: [
+      "Played {C:attention}Aces{},",
+      "{C:attention}4s{} and {C:attention}9s{} each give",
+      "{X:mult,C:white} X1.5{} Mult when scored"
+    ],
+    image_url: "assets/1x/j_mf_pixeljoker.png",
+    rarity: "Rare"
+  },
+  {
     name: "Rose-Tinted Glasses",
     text: [
       "If {C:attention}first hand{} of round is",
@@ -294,6 +421,15 @@ let jokers = [
       "create a free {C:attention}Double Tag{}",
     ],
     image_url: "assets/1x/j_mf_rosetinted.png",
+    rarity: "Rare"
+  },
+  {
+    name: "The Solo",
+    text: [
+      "Gains {X:mult,C:white} X0.1{} Mult if played",
+      "hand has only {C:attention}1{} card"
+    ],
+    image_url: "assets/1x/j_mf_thesolo.png",
     rarity: "Rare"
   },
   {
@@ -306,7 +442,17 @@ let jokers = [
     ],
     image_url: "assets/1x/j_mf_triangle.png",
     rarity: "Rare"
-  }
+  },
+  {
+    name: "The Jester",
+    text: [
+      "{X:mult,C:white} X2{} Mult for",
+      "each unique played pair"
+    ],
+    image_url: "assets/1x/j_mf_thejester.png",
+    rarity: "Legendary",
+    soul: true
+  },
 ]
 
 let cols = {
@@ -423,14 +569,29 @@ for (let joker of jokers) {
 
   let joker_div = document.createElement("div");
   joker_div.classList.add("joker");
-  joker_div.innerHTML = `
-    <h3>${joker.name}</h3>
-    <img src="${joker.image_url}" alt="${joker.name}" />
-    <h4 class="rarity" style="background-color: ${rarities[joker.rarity]}">${joker.rarity}</h4>
-    <div class="text">${joker.text}</div>
-  `;
+  if (joker.soul) {
+    joker_div.innerHTML = `
+      <h3>${joker.name}</h3>
+      <span class="soulholder">
+        <img src="${joker.image_url}" alt="${joker.name}" class="soul-bg" />
+        <img src="${joker.image_url}" alt="${joker.name}" class="soul-top" />
+      </span>
+      <h4 class="rarity" style="background-color: ${rarities[joker.rarity]}">${joker.rarity}</h4>
+      <div class="text">${joker.text}</div>
+    `;
+  } else {
+    joker_div.innerHTML = `
+      <h3>${joker.name}</h3>
+      <img src="${joker.image_url}" alt="${joker.name}" />
+      <h4 class="rarity" style="background-color: ${rarities[joker.rarity]}">${joker.rarity}</h4>
+      <div class="text">${joker.text}</div>
+    `;
+  }
   if (joker.name == "Huge Joker") {
     joker_div.classList.add("hugejoker");
+  }
+  if (joker.name == "Pixel Joker") {
+    joker_div.classList.add("pixeljoker");
   }
 
   jokers_div.appendChild(joker_div);

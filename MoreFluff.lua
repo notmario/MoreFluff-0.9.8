@@ -2,7 +2,8 @@
 --- MOD_NAME: More Fluff
 --- MOD_ID: MoreFluff
 --- MOD_AUTHOR: [notmario]
---- MOD_DESCRIPTION: Adds 30 jokers. wow
+--- MOD_DESCRIPTION: Adds 45 jokers. wow
+--- BADGE_COLOUR: 814BA8
 
 ----------------------------------------------
 ------------MOD CODE -------------------------
@@ -267,12 +268,132 @@ function SMODS.INIT.MoreFluff()
                 "{C:inactive}(Must have room)"
             },
         },
-        -- mf_pixeljoker = {
-        --     name = "Pixel Joker",
-        --     text = {
-        --         "funny idea,"
-        --     },
-        -- },
+        mf_leagueoflegends = {
+            name = "Bad Legal Defence",
+            text = {
+                "Create a {C:attention}Death{} {C:tarot}Tarot{}",
+                "when {C:attention}Boss Blind{}",
+                "is selected",
+                "{C:inactive}(Must have room)"
+            },
+        },
+        mf_pipe = {
+            name = "Philosophical Joker",
+            text = {
+                "{C:dark_edition}+1{} Joker Slot"
+            },
+        },
+        mf_blackmarket = {
+            name = "Black Market",
+            text = {
+                "When {C:attention}Boss Blind{}",
+                "is selected, spend {C:attention}$10",
+                "to summon an {C:spectral}Ankh{} card"
+            },
+        },
+        mf_blasphemy = {
+            name = "Blasphemy",
+            text = {
+                "{X:red,C:white} X4 {} Mult,",
+                "{C:blue}-9999{} hands",
+                "when hand is played"
+            },
+        },
+        mf_thesolo = {
+            name = "The Solo",
+            text = {
+                "Gains {X:mult,C:white} X0.1 {} Mult if played",
+                "hand has only {C:attention}1{} card",
+                "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)",
+            }
+        },
+        mf_thejester = {
+            name = "The Jester",
+            text = {
+                "{X:mult,C:white} X2 {} Mult for",
+                "each unique played pair"
+            }
+        },
+        mf_globe = {
+            name = "Globe",
+            text = {
+                "Create a {C:planet}Planet{} card",
+                "when you {C:attention}reroll{} in the shop",
+            }
+        },
+        mf_globe = {
+            name = "Globe",
+            text = {
+                "Create a {C:planet}Planet{} card",
+                "when you {C:attention}reroll{} in the shop",
+            }
+        },
+        mf_couponcatalogue = {
+            name = "Coupon Catalogue",
+            text = {
+                "{C:mult}+10{} Mult for each",
+                "{C:attention}Voucher{} purchased",
+                "this run",
+                "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+            }
+        },
+        mf_ace = {
+            name = "Ace Up The Sleeve",
+            text = {
+                "Add a random {C:attention}Enhanced",
+                "{C:attention}Ace{} to your hand",
+                "when you have {C:blue}1{}",
+                "hand left"
+            }
+        },
+        mf_fleshprison = {
+            name = "Flesh Prison",
+            text = {
+                "{C:red}X2{} {C:attention}Boss Blind{} size",
+                "Destroyed and creates a",
+                "{C:dark_edition}Negative{} {C:spectral}Soul{} card when a",
+                "{C:attention}Boss Blind{} is defeated"
+            }
+        },
+        mf_goldencarrot = {
+            name = "Golden Carrot",
+            text = {
+                "Earn {C:money}$#1#{} at",
+                "end of round",
+                "{C:money}-$#2#{} per hand played"
+            }
+        },
+        mf_bowlingball = {
+            name = "Bowling Ball",
+            text = {
+                "Played {C:attention}3s{}",
+                "give {C:chips}+60{} Chips",
+                "and {C:mult}+10{} Mult",
+                "when scored"
+            }
+        },
+        mf_simplified = {
+            name = "Simplified Joker",
+            text = {
+                "Other {C:blue}Common{} Jokers",
+                "each give {C:mult}+4{} Mult",
+            }
+        },
+        mf_jankman = {
+            name = "Jankman",
+            text = {
+                "Other {C:dark_edition}Modded{} Jokers",
+                "each give {X:mult,C:white} X1.5 {} Mult",
+            }
+        },
+        mf_pixeljoker = {
+            name = "Pixel Joker",
+            text = {
+                "Played {C:attention}Aces{},",
+                "{C:attention}4s{} and {C:attention}9s{} each give",
+                "{X:mult,C:white} X1.5 {} Mult when scored"
+            },
+        },
         -- mf_e = {
         --     name = "Specific Alphabet Joker",
         --     text = {
@@ -297,193 +418,277 @@ function SMODS.INIT.MoreFluff()
         mf_brainrot = SMODS.Joker:new(
             "Brainrot", "",
             { config = { chips = 0 }},
-            { }, "",
+            { x = 0, y = 0 }, "",
             2, 6, true, true, true, true
         ),
         mf_triangle = SMODS.Joker:new(
             "Triangle Joker", "",
             { extra = { chips = 1, chip_mod = 2 }},
-            { }, "",
+            { x = 0, y = 0 }, "",
             3, 7, true, true, true, true
         ),
         mf_boxofhands = SMODS.Joker:new(
             "Box of Hands", "",
             { },
-            { }, "",
+            { x = 0, y = 0 }, "",
             2, 6, true, true, false, true
         ),
         mf_hallofmirrors = SMODS.Joker:new(
             "Hall of Mirrors", "",
             { config = { h_size = 0 } },
-            { }, "",
+            { x = 0, y = 0 }, "",
             2, 7, true, true, false, true
         ),
         mf_rosetinted = SMODS.Joker:new(
             "Rose-Tinted Glasses", "",
             { },
-            { }, "",
+            { x = 0, y = 0 }, "",
             3, 7, true, true, false, true
         ),
         mf_impostor = SMODS.Joker:new(
             "Impostor", "",
             { },
-            { }, "",
+            { x = 0, y = 0 }, "",
             2, 6, true, true, true, true
         ),
         mf_glitterbomb = SMODS.Joker:new(
             "Glitter Bomb", "",
             { },
-            { }, "",
+            { x = 0, y = 0 }, "",
             3, 14, true, true, false, true
         ),
         mf_basepaulcard = SMODS.Joker:new(
             "Basepaul Card", "",
             { },
-            { }, "",
+            { x = 0, y = 0 }, "",
             1, 6, true, true, true, true
         ),
         mf_jester = SMODS.Joker:new(
             "Jester", "",
             { },
-            { }, "",
+            { x = 0, y = 0 }, "",
             1, 2, true, true, true, true
         ),
         mf_lollipop = SMODS.Joker:new(
             "Lollipop", "",
             { Xmult = 1.75, extra = 0.15 },
-            { }, "",
+            { x = 0, y = 0 }, "",
             1, 6, true, true, true, false
         ),
         mf_spiraljoker = SMODS.Joker:new(
             "Spiral Joker", "",
             { },
-            { }, "",
+            { x = 0, y = 0 }, "",
             1, 5, true, true, true, true
         ),
         mf_luckycharm = SMODS.Joker:new(
             "Lucky Charm", "",
             { },
-            { }, "",
+            { x = 0, y = 0 }, "",
             1, 6, true, true, true, true
         ),
         mf_stylemeter = SMODS.Joker:new(
             "Style Meter", "",
             { },
-            { }, "",
+            { x = 0, y = 0 }, "",
             2, 6, true, true, false, true
         ),
         mf_bloodpact = SMODS.Joker:new(
             "Blood Pact", "",
             { },
-            { }, "",
+            { x = 0, y = 0 }, "",
             3, 9, true, true, true, false
         ),
         mf_moneyprinter = SMODS.Joker:new(
             "Money Printer", "",
             { },
-            { }, "",
+            { x = 0, y = 0 }, "",
             1, 5, true, true, false, true
         ),
         mf_sealthedeal = SMODS.Joker:new(
             "Seal the Deal", "",
             { },
-            { }, "",
+            { x = 0, y = 0 }, "",
             2, 6, true, true, true, true
         ),
         mf_particleaccelerator = SMODS.Joker:new(
             "Particle Accelerator", "",
             { Xmult = 1 },
-            { }, "",
+            { x = 0, y = 0 }, "",
             3, 7, true, true, true, true
         ),
         mf_clownfish = SMODS.Joker:new(
             "Clownfish", "",
             { },
-            { }, "",
+            { x = 0, y = 0 }, "",
             1, 6, true, true, false, true
         ),
         mf_balatromods = SMODS.Joker:new(
             "Balatro Mods", "",
             { },
-            { }, "",
+            { x = 0, y = 0 }, "",
             1, 3, true, true, false, true
         ),
         mf_treasuremap = SMODS.Joker:new(
             "Treasure Map", "",
             { extra = 0 },
-            { }, "",
+            { x = 0, y = 0 }, "",
             1, 4, true, true, false, true
         ),
         mf_expansionpack = SMODS.Joker:new(
             "Expansion Pack", "",
             { },
-            { }, "",
+            { x = 0, y = 0 }, "",
             1, 5, true, true, true, true
         ),
         mf_fived = SMODS.Joker:new(
             "5D Joker with Multiverse Time Travel", "",
             { },
-            { }, "",
+            { x = 0, y = 0 }, "",
             3, 10, true, true, false, false
         ),
         mf_teacup = SMODS.Joker:new(
             "Teacup", "",
             { extra = 4 },
-            { }, "",
+            { x = 0, y = 0 }, "",
             2, 5, true, true, true, false
         ),
         mf_whiteboard = SMODS.Joker:new(
             "Whiteboard", "",
             { },
-            { }, "",
+            { x = 0, y = 0 }, "",
             2, 6, true, true, true, true
         ),
         mf_mspaint = SMODS.Joker:new(
             "MS Paint Joker", "",
             { config = { h_size = 0 } },
-            { }, "",
+            { x = 0, y = 0 }, "",
             1, 5, true, true, false, true
         ),
         mf_hugejoker = SMODS.Joker:new(
             "Huge Joker", "",
             { },
-            { }, "",
+            { x = 0, y = 0 }, "",
             2, 8, true, true, true, true
         ),
         mf_miner = SMODS.Joker:new(
             "Miner", "",
             { },
-            { }, "",
-            1, 5, true, true, false, true
+            { x = 0, y = 0 }, "",
+            1, 5, true, true, true, true
         ),
         mf_recycling = SMODS.Joker:new(
             "Recycling", "",
             { },
-            { }, "",
+            { x = 0, y = 0 }, "",
             2, 5, true, true, true, true
         ),
         mf_hollow = SMODS.Joker:new(
             "Hollow Joker", "",
             { },
-            { }, "",
+            { x = 0, y = 0 }, "",
             1, 4, true, true, true, true
         ),
         mf_tonersoup = SMODS.Joker:new(
             "I Sip Toner Soup", "",
             { extra = 3 },
-            { }, "",
+            { x = 0, y = 0 }, "",
             2, 8, true, true, true, false
         ),
-        -- mf_pixeljoker = SMODS.Joker:new(
-        --     "Pixel Joker", "",
-        --     { },
-        --     { }, "",
-        --     2, 8, true, true, true, true
-        -- ),
+        mf_leagueoflegends = SMODS.Joker:new(
+            "Bad Legal Defence", "",
+            { },
+            { x = 0, y = 0 }, "",
+            1, 6, true, true, true, true
+        ),
+        mf_pipe = SMODS.Joker:new(
+            "Philosophical Joker", "",
+            { },
+            { x = 0, y = 0 }, "",
+            1, 1, true, true, false, true
+        ),
+        mf_blackmarket = SMODS.Joker:new(
+            "Black Market", "",
+            { },
+            { x = 0, y = 0 }, "",
+            2, 4, true, true, false, false
+        ),
+        mf_blasphemy = SMODS.Joker:new(
+            "Blasphemy", "",
+            { },
+            { x = 0, y = 0 }, "",
+            2, 4, true, true, true, true
+        ),
+        mf_thesolo = SMODS.Joker:new(
+            "The Solo", "",
+            { Xmult = 1 },
+            { x = 0, y = 0 }, "",
+            3, 7, true, true, true, true
+        ),
+        mf_thejester = SMODS.Joker:new(
+            "The Jester", "",
+            { },
+            { x = 0, y = 0 }, "",
+            4, 20, true, true, true, true
+        ),
+        mf_globe = SMODS.Joker:new(
+            "Globe", "",
+            { },
+            { x = 0, y = 0 }, "",
+            2, 6, true, true, true, true
+        ),
+        mf_couponcatalogue = SMODS.Joker:new(
+            "Coupon Catalogue", "",
+            { },
+            { x = 0, y = 0 }, "",
+            1, 6, true, true, true, true
+        ),
+        mf_ace = SMODS.Joker:new(
+            "Ace Up The Sleeve", "",
+            { },
+            { x = 0, y = 0 }, "",
+            2, 6, true, true, true, true
+        ),
+        mf_fleshprison = SMODS.Joker:new(
+            "Flesh Prison", "",
+            { },
+            { x = 0, y = 0 }, "",
+            3, 10, true, true, false, false
+        ),
+        mf_goldencarrot = SMODS.Joker:new(
+            "Golden Carrot", "",
+            { extra = 10 },
+            { x = 0, y = 0 }, "",
+            2, 4, true, true, false, false
+        ),
+        mf_bowlingball = SMODS.Joker:new(
+            "Bowling Ball", "",
+            { },
+            { x = 0, y = 0 }, "",
+            3, 8, true, true, true, true
+        ),
+        mf_simplified = SMODS.Joker:new(
+            "Simplified Joker", "",
+            { },
+            { x = 0, y = 0 }, "",
+            1, 4, true, true, true, true
+        ),
+        mf_jankman = SMODS.Joker:new(
+            "Jankman", "",
+            { },
+            { x = 0, y = 0 }, "",
+            3, 10, true, true, true, true
+        ),
+        mf_pixeljoker = SMODS.Joker:new(
+            "Pixel Joker", "",
+            { },
+            { x = 0, y = 0 }, "",
+            3, 9, true, true, true, true
+        ),
         -- mf_e = SMODS.Joker:new(
         --     "E Joker", "",
         --     { extra = 0 },
-        --     { }, "",
+        --     { x = 0, y = 0 }, "",
         --     2, 6, true, true, true, true
         -- ),
     }
@@ -493,11 +698,33 @@ function SMODS.INIT.MoreFluff()
     local no_art_yet = {
     }
 
+    local joker_order_thing = {}
+
     for k, v in pairs(jokers) do
+        local j = {}
+        j.name = v.name
+        j.rarity = v.rarity
+        j.slug = k
+        table.insert(joker_order_thing, j)
+    end
+
+    table.sort(joker_order_thing, function(a, b)
+        if a.rarity ~= b.rarity then
+            return a.rarity < b.rarity
+        end
+        return a.name < b.name
+    end)
+
+    for i, j in ipairs(joker_order_thing) do
+        local k = j.slug
+        local v = jokers[k]
         if not jokerBlacklists[k] then
             v.slug = "j_" .. k
             v.loc_txt = localization[k]
-            v.spritePos = { x = 0, y = 0 }
+            -- v.spritePos = { x = 0, y = 0 }
+            if k == "mf_thejester" then
+                v.soul_pos = { x = 0, y = 1 }
+            end
             v.mod = "MoreFluff"
             v:register()
             if k == "mf_hugejoker" then
@@ -558,6 +785,10 @@ function SMODS.INIT.MoreFluff()
         end
     end
 
+    SMODS.Jokers.j_mf_brainrot.loc_def = function(self)
+        return {self.ability.mult}
+    end
+
     SMODS.Jokers.j_mf_triangle.calculate = function(self, context)
         if context.cardarea == G.jokers then
             if context.before then
@@ -579,6 +810,10 @@ function SMODS.INIT.MoreFluff()
                 colour = G.C.CHIPS
             }
         end
+    end
+
+    SMODS.Jokers.j_mf_triangle.loc_def = function(self)
+        return {self.ability.extra.chips, self.ability.extra.chip_mod}
     end
 
     SMODS.Jokers.j_mf_boxofhands.calculate = function(self, context)
@@ -617,10 +852,14 @@ function SMODS.INIT.MoreFluff()
                 colour = G.C.MONEY
             }
         end
-        if context.end_of_round then
+        if context.end_of_round and not context.blueprint and not context.repetition and not context.individual then
             G.hand:change_size(-self.ability.h_size)
             self.ability.h_size = 0
         end
+    end
+
+    SMODS.Jokers.j_mf_hallofmirrors.loc_def = function(self)
+        return {self.ability.h_size}
     end
 
     SMODS.Jokers.j_mf_rosetinted.calculate = function(self, context)
@@ -636,6 +875,10 @@ function SMODS.INIT.MoreFluff()
            return true
         end
         return nil
+    end
+
+    SMODS.Jokers.j_mf_rosetinted.loc_def = function(self)
+        return {localize{type = 'name_text', set = 'Tag', key = 'tag_double', nodes = {}}}
     end
 
     -- SMODS.Jokers.j_mf_chef.calculate = function(self, context)
@@ -669,10 +912,6 @@ function SMODS.INIT.MoreFluff()
                 }
             end
         end
-    end
-    
-    SMODS.Jokers.j_mf_glitterbomb.effect = function(self, context)
-        self.ability.extra_cost = (self.ability.extra_cost or 0) + 8
     end
 
     SMODS.Jokers.j_mf_glitterbomb.calculate = function(self, context)
@@ -724,7 +963,7 @@ function SMODS.INIT.MoreFluff()
                 }
             else
                 return {
-                    message = localize{type='variable',key='a_xmult',vars={1.2}},
+                    message = localize{type='variable',key='a_xmult',vars={1.25}},
                     Xmult_mod = 1.25,
                 }
             end
@@ -779,6 +1018,10 @@ function SMODS.INIT.MoreFluff()
         end
     end
 
+    SMODS.Jokers.j_mf_lollipop.loc_def = function(self)
+        return {self.ability.x_mult, self.ability.extra}
+    end
+
     SMODS.Jokers.j_mf_spiraljoker.calculate = function(self, context)
         if SMODS.end_calculate_context(context) then
             local val = 10 + math.floor(7 * math.cos(math.pi/8 * G.GAME.dollars or 0) + 0.5)
@@ -787,6 +1030,10 @@ function SMODS.INIT.MoreFluff()
                 mult_mod = val
             }
         end
+    end
+
+    SMODS.Jokers.j_mf_spiraljoker.loc_def = function(self)
+        return {10 + math.floor(7 * math.cos(math.pi/8 * G.GAME.dollars or 0) + 0.5)}
     end
 
     SMODS.Jokers.j_mf_luckycharm.calculate = function(self, context)
@@ -813,6 +1060,10 @@ function SMODS.INIT.MoreFluff()
         end
     end
 
+    SMODS.Jokers.j_mf_luckycharm.loc_def = function(self)
+        return {G.GAME.probabilities.normal, 20, 3, 20, 8}
+    end
+
     SMODS.Jokers.j_mf_stylemeter.calculate = function(self, context)
         if context.skip_blind and not context.blueprint then
             G.E_MANAGER:add_event(Event({
@@ -826,9 +1077,13 @@ function SMODS.INIT.MoreFluff()
                 end}))
         end
     end
+
+    SMODS.Jokers.j_mf_stylemeter.loc_def = function(self)
+        return {G.GAME.skips * 3}
+    end
     
     SMODS.Jokers.j_mf_bloodpact.calculate = function(self, context)
-        if SMODS.end_calculate_context(context) then
+        if SMODS.end_calculate_context(context) and context.full_hand ~= nil then
             local non_hearts = 0
             for k, v in ipairs(context.full_hand) do
                 if not v:is_suit('Hearts', nil, true) then
@@ -869,7 +1124,7 @@ function SMODS.INIT.MoreFluff()
     end
     
     SMODS.Jokers.j_mf_moneyprinter.calculate = function(self, context)
-        if context.after and not context.blueprint then
+        if context.after and not context.blueprint and context.full_hand ~= nil and context.cardarea == G.jokers then
             local total_money = 0
             local values = G.GAME.dollars..""
             for k, v in ipairs(context.full_hand) do
@@ -889,7 +1144,7 @@ function SMODS.INIT.MoreFluff()
     end
     
     SMODS.Jokers.j_mf_sealthedeal.calculate = function(self, context)
-        if context.after and G.GAME.chips + hand_chips * mult > G.GAME.blind.chips then
+        if context.after and G.GAME.chips + hand_chips * mult > G.GAME.blind.chips and context.cardarea == G.jokers then
             local unsealed = {}
             for k, v in ipairs(context.full_hand) do
                 if not v.seal then
@@ -923,7 +1178,7 @@ function SMODS.INIT.MoreFluff()
     end
     
     SMODS.Jokers.j_mf_particleaccelerator.calculate = function(self, context)
-        if context.after then
+        if context.after and context.full_hand ~= nil and context.cardarea == G.jokers then
             if #context.full_hand == 1 then
                 self.ability.x_mult = self.ability.x_mult + 1
                 return {
@@ -944,6 +1199,10 @@ function SMODS.INIT.MoreFluff()
                 }
             end
         end
+    end
+
+    SMODS.Jokers.j_mf_particleaccelerator.loc_def = function(self)
+        return {self.ability.x_mult}
     end
 
     SMODS.Jokers.j_mf_clownfish.calculate = function(self, context)
@@ -1015,6 +1274,10 @@ function SMODS.INIT.MoreFluff()
             }
         end
     end
+
+    SMODS.Jokers.j_mf_treasuremap.loc_def = function(self)
+        return {self.ability.extra}
+    end
     
     SMODS.Jokers.j_mf_expansionpack.calculate = function(self, context)
         if context.setting_blind and not self.getting_sliced and not (context.blueprint_card or self).getting_sliced and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
@@ -1024,6 +1287,8 @@ function SMODS.INIT.MoreFluff()
             function temp_ban_joker(key)
                 if not G.GAME.banned_keys[key] then 
                     G.GAME.banned_keys[key] = 214389
+                elseif G.GAME.banned_keys[key] % 214389 == 0 then
+                    G.GAME.banned_keys[key] = G.GAME.banned_keys[key] + 214389
                 end
             end
             local vanilla_jokers = {"j_joker", "j_greedy_joker", "j_lusty_joker", "j_wrathful_joker", "j_gluttenous_joker", "j_jolly", "j_zany", "j_mad", "j_crazy", "j_droll", "j_sly", "j_wily", "j_clever", "j_devious", "j_crafty", "j_half", "j_stencil", "j_four_fingers", "j_mime", "j_credit_card", "j_ceremonial", "j_banner", "j_mystic_summit", "j_marble", "j_loyalty_card", "j_8_ball", "j_misprint", "j_dusk", "j_raised_fist", "j_chaos", "j_fibonacci", "j_steel_joker", "j_scary_face", "j_abstract", "j_delayed_grat", "j_hack", "j_pareidolia", "j_gros_michel", "j_even_steven", "j_odd_todd", "j_scholar", "j_business", "j_supernova", "j_ride_the_bus", "j_space", "j_egg", "j_burglar", "j_blackboard", "j_runner", "j_ice_cream", "j_dna", "j_splash", "j_blue_joker", "j_sixth_sense", "j_constellation", "j_hiker", "j_faceless", "j_green_joker", "j_superposition", "j_todo_list", "j_cavendish", "j_card_sharp", "j_red_card", "j_madness", "j_square", "j_seance", "j_riff_raff", "j_vampire", "j_shortcut", "j_hologram", "j_vagabond", "j_baron", "j_cloud_9", "j_rocket", "j_obelisk", "j_midas_mask", "j_luchador", "j_photograph", "j_gift", "j_turtle_bean", "j_erosion", "j_reserved_parking", "j_mail", "j_to_the_moon", "j_hallucination", "j_fortune_teller", "j_juggler", "j_drunkard", "j_stone", "j_golden", "j_lucky_cat", "j_baseball", "j_bull", "j_diet_cola", "j_trading", "j_flash", "j_popcorn", "j_trousers", "j_ancient", "j_ramen", "j_walkie_talkie", "j_selzer", "j_castle", "j_smiley", "j_campfire", "j_ticket", "j_mr_bones", "j_acrobat", "j_sock_and_buskin", "j_swashbuckler", "j_troubadour", "j_certificate", "j_smeared", "j_throwback", "j_hanging_chad", "j_rough_gem", "j_bloodstone", "j_arrowhead", "j_onyx_agate", "j_glass", "j_ring_master", "j_flower_pot", "j_blueprint", "j_wee", "j_merry_andy", "j_oops", "j_idol", "j_seeing_double", "j_matador", "j_hit_the_road", "j_duo", "j_trio", "j_family", "j_order", "j_tribe", "j_stuntman", "j_invisible", "j_brainstorm", "j_satellite", "j_shoot_the_moon", "j_drivers_license", "j_cartomancer", "j_astronomer", "j_burnt", "j_bootstraps", "j_caino", "j_triboulet", "j_yorick", "j_chicot", "j_perkeo"}
@@ -1041,8 +1306,10 @@ function SMODS.INIT.MoreFluff()
                     end
                     local vanilla_jokers = {"j_joker", "j_greedy_joker", "j_lusty_joker", "j_wrathful_joker", "j_gluttenous_joker", "j_jolly", "j_zany", "j_mad", "j_crazy", "j_droll", "j_sly", "j_wily", "j_clever", "j_devious", "j_crafty", "j_half", "j_stencil", "j_four_fingers", "j_mime", "j_credit_card", "j_ceremonial", "j_banner", "j_mystic_summit", "j_marble", "j_loyalty_card", "j_8_ball", "j_misprint", "j_dusk", "j_raised_fist", "j_chaos", "j_fibonacci", "j_steel_joker", "j_scary_face", "j_abstract", "j_delayed_grat", "j_hack", "j_pareidolia", "j_gros_michel", "j_even_steven", "j_odd_todd", "j_scholar", "j_business", "j_supernova", "j_ride_the_bus", "j_space", "j_egg", "j_burglar", "j_blackboard", "j_runner", "j_ice_cream", "j_dna", "j_splash", "j_blue_joker", "j_sixth_sense", "j_constellation", "j_hiker", "j_faceless", "j_green_joker", "j_superposition", "j_todo_list", "j_cavendish", "j_card_sharp", "j_red_card", "j_madness", "j_square", "j_seance", "j_riff_raff", "j_vampire", "j_shortcut", "j_hologram", "j_vagabond", "j_baron", "j_cloud_9", "j_rocket", "j_obelisk", "j_midas_mask", "j_luchador", "j_photograph", "j_gift", "j_turtle_bean", "j_erosion", "j_reserved_parking", "j_mail", "j_to_the_moon", "j_hallucination", "j_fortune_teller", "j_juggler", "j_drunkard", "j_stone", "j_golden", "j_lucky_cat", "j_baseball", "j_bull", "j_diet_cola", "j_trading", "j_flash", "j_popcorn", "j_trousers", "j_ancient", "j_ramen", "j_walkie_talkie", "j_selzer", "j_castle", "j_smiley", "j_campfire", "j_ticket", "j_mr_bones", "j_acrobat", "j_sock_and_buskin", "j_swashbuckler", "j_troubadour", "j_certificate", "j_smeared", "j_throwback", "j_hanging_chad", "j_rough_gem", "j_bloodstone", "j_arrowhead", "j_onyx_agate", "j_glass", "j_ring_master", "j_flower_pot", "j_blueprint", "j_wee", "j_merry_andy", "j_oops", "j_idol", "j_seeing_double", "j_matador", "j_hit_the_road", "j_duo", "j_trio", "j_family", "j_order", "j_tribe", "j_stuntman", "j_invisible", "j_brainstorm", "j_satellite", "j_shoot_the_moon", "j_drivers_license", "j_cartomancer", "j_astronomer", "j_burnt", "j_bootstraps", "j_caino", "j_triboulet", "j_yorick", "j_chicot", "j_perkeo"}
                     function temp_unban_joker(key)
-                        if G.GAME.banned_keys[key] == 214389 then 
+                        if G.GAME.banned_keys[key] == 214389 then
                             G.GAME.banned_keys[key] = nil
+                        elseif G.GAME.banned_keys[key] % 214389 == 0 then 
+                            G.GAME.banned_keys[key] = G.GAME.banned_keys[key] - 214389
                         end
                     end
                     for i = 1, #vanilla_jokers do
@@ -1055,7 +1322,7 @@ function SMODS.INIT.MoreFluff()
     end
     
     SMODS.Jokers.j_mf_fived.calculate = function(self, context)
-        if context.after and G.GAME.chips + hand_chips * mult > G.GAME.blind.chips * 10 then
+        if context.after and G.GAME.chips + hand_chips * mult > G.GAME.blind.chips * 10 and context.cardarea == G.jokers then
             ease_ante(-1)
             G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
             G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante-1
@@ -1119,6 +1386,10 @@ function SMODS.INIT.MoreFluff()
             end
         end
     end
+
+    SMODS.Jokers.j_mf_teacup.loc_def = function(self)
+        return {self.ability.extra}
+    end
     
     SMODS.Jokers.j_mf_whiteboard.calculate = function(self, context)
         if SMODS.end_calculate_context(context) then
@@ -1137,7 +1408,7 @@ function SMODS.INIT.MoreFluff()
             self.ability.h_size = self.ability.h_size + 4
             G.hand:change_size(4)
         end
-        if context.after and not context.blueprint and self.ability.h_size ~= 0 then
+        if context.after and not context.blueprint and self.ability.h_size ~= 0 and context.cardarea == G.jokers then
             G.hand:change_size(-self.ability.h_size)
             self.ability.h_size = 0
         end
@@ -1153,7 +1424,7 @@ function SMODS.INIT.MoreFluff()
     end
     
     SMODS.Jokers.j_mf_miner.calculate = function(self, context)
-        if context.setting_blind and not context.blueprint and context.blind.boss and not self.getting_sliced then
+        if context.setting_blind and context.blind.boss and not self.getting_sliced then
             G.E_MANAGER:add_event(Event({
                 func = (function()
                     add_tag(Tag('tag_d_six'))
@@ -1245,150 +1516,374 @@ function SMODS.INIT.MoreFluff()
         end
     end
 
-    -- -- challenge for testing.
-    -- local challenges = G.CHALLENGES
-	-- G.localization.misc.challenge_names["c_mod_morefluff_testing"] = "testing challenge"
+    SMODS.Jokers.j_mf_tonersoup.loc_def = function(self)
+        return {self.ability.extra}
+    end
     
-    -- table.insert(G.CHALLENGES,#G.CHALLENGES+1,{
-    --     name = 'testing challenge',
-    --     id = 'c_mod_morefluff_testing',
-    --     rules = {
-    --         custom = {
-    --         },
-    --         modifiers = {
-    --             {id = 'dollars', value = 9999},
-    --             {id = 'discards', value = 9999},
-    --             {id = 'hands', value = 9999},
-    --             {id = 'reroll_cost', value = -9999},
-    --             {id = 'joker_slots', value = 9999},
-    --             {id = 'consumable_slots', value = 9999},
-    --             {id = 'hand_size', value = 8},
-    --         }
-    --     },
-    --     jokers = {
-    --         {id = 'j_mf_basepaulcard'},
-    --     },
-    --     consumeables = {
-    --     },
-    --     vouchers = {
-    --     },
-    --     deck = {
-    --         --enhancement = 'm_glass',
-    --         --edition = 'foil',
-    --         --gold_seal = true,
-    --         --yes_ranks = {['3'] = true,T = true},
-    --         --no_ranks = {['4'] = true},
-    --         --yes_suits = {S=true},
-    --         --no_suits = {D=true},
-    --         -- cards = {},
-    --         type = 'Challenge Deck'
-    --     },
-    --     restrictions = {
-    --         banned_cards = {
-    --         },
-    --         banned_tags = {
-    --             -- {id = 'tag_garbage'},
-    --             -- {id = 'tag_handy'},
-    --         },
-    --         banned_other = {
-
-    --         }
-    --     }
-    -- })
-end
-
---- the good shit ---
-
--- UIBox garbage / Copied from LushMod . Thanks luscious!
-local generate_UIBox_ability_tableref = Card.generate_UIBox_ability_table
-function Card.generate_UIBox_ability_table(self)
-    local card_type, hide_desc = self.ability.set or "None", nil
-    local loc_vars = nil
-    local main_start, main_end = nil, nil
-    local no_badge = nil
-
-    if self.config.center.unlocked == false and not self.bypass_lock then    -- For everyting that is locked
-    elseif card_type == 'Undiscovered' and not self.bypass_discovery_ui then -- Any Joker or tarot/planet/voucher that is not yet discovered
-    elseif self.debuff then
-    elseif card_type == 'Default' or card_type == 'Enhanced' then
-    elseif self.ability.set == 'Joker' then
-        local customJoker = false
-
-        if self.ability.name == 'Brainrot' then
-            loc_vars = {self.ability.mult}
-            customJoker = true
-        elseif self.ability.name == 'Triangle Joker' then 
-            loc_vars = {self.ability.extra.chips, self.ability.extra.chip_mod}
-            customJoker = true
-        elseif self.ability.name == 'Box of Hands' then 
-            customJoker = true
-        elseif self.ability.name == 'Rose-Tinted Glasses' then 
-            customJoker = true
-            loc_vars = {localize{type = 'name_text', set = 'Tag', key = 'tag_double', nodes = {}}}
-        elseif self.ability.name == 'Hall of Mirrors' then 
-            loc_vars = {self.ability.h_size}
-            customJoker = true
-        elseif self.ability.name == 'Lollipop' then 
-            loc_vars = {self.ability.x_mult, self.ability.extra}
-            customJoker = true
-        elseif self.ability.name == 'Spiral Joker' then 
-            loc_vars = {10 + math.floor(7 * math.cos(math.pi/8 * G.GAME.dollars or 0) + 0.5)}
-            customJoker = true
-        elseif self.ability.name == 'Lucky Charm' then 
-            loc_vars = {G.GAME.probabilities.normal, 20, 3, 20, 8}
-            customJoker = true
-        elseif self.ability.name == 'Style Meter' then 
-            loc_vars = {G.GAME.skips * 3}
-            customJoker = true
-        elseif self.ability.name == 'Particle Accelerator' then 
-            loc_vars = {self.ability.x_mult}
-            customJoker = true
-        elseif self.ability.name == 'Treasure Map' then 
-            loc_vars = {self.ability.extra}
-            customJoker = true
-        elseif self.ability.name == 'Teacup' then 
-            loc_vars = {self.ability.extra}
-            customJoker = true
-        elseif self.ability.name == 'I Sip Toner Soup' then 
-            loc_vars = {self.ability.extra}
-            customJoker = true
-        end
-
-        if customJoker then
-            local badges = {}
-            if (card_type ~= 'Locked' and card_type ~= 'Undiscovered' and card_type ~= 'Default') or self.debuff then
-                badges.card_type = card_type
+    SMODS.Jokers.j_mf_leagueoflegends.calculate = function(self, context)
+        if context.setting_blind and context.blind.boss and not self.getting_sliced then
+            if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+                G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'before',
+                    delay = 0.0,
+                    func = (function()
+                            local card = create_card(nil,G.consumeables, nil, nil, nil, nil, 'c_death', 'sup')
+                            card:add_to_deck()
+                            G.consumeables:emplace(card)
+                            G.GAME.consumeable_buffer = 0
+                        return true
+                    end)}))
+                card_eval_status_text(self, 'extra', nil, nil, nil, {message = "DEATH", colour = G.C.PURPLE})
             end
-            if self.ability.set == 'Joker' and self.bypass_discovery_ui and (not no_badge) then
-                badges.force_rarity = true
-            end
-            if self.edition then
-                if self.edition.type == 'negative' and self.ability.consumeable then
-                    badges[#badges + 1] = 'negative_consumable'
-                else
-                    badges[#badges + 1] = (self.edition.type == 'holo' and 'holographic' or self.edition.type)
-                end
-            end
-            if self.seal then
-                badges[#badges + 1] = string.lower(self.seal) .. '_seal'
-            end
-            if self.ability.eternal then
-                badges[#badges + 1] = 'eternal'
-            end
-            if self.pinned then
-                badges[#badges + 1] = 'pinned_left'
-            end
-
-            if self.sticker then
-                loc_vars = loc_vars or {};
-                loc_vars.sticker = self.sticker
-            end
-
-            local center = self.config.center
-            return generate_card_ui(center, nil, loc_vars, card_type, badges, hide_desc, main_start, main_end)
         end
     end
-    return generate_UIBox_ability_tableref(self)
+    
+    SMODS.Jokers.j_mf_blackmarket.calculate = function(self, context)
+        if context.setting_blind and not context.blueprint and context.blind.boss and not self.getting_sliced then
+            if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit and G.GAME.dollars >= 10 then
+                ease_dollars(-10)
+                G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'before',
+                    delay = 0.0,
+                    func = (function()
+                            local card = create_card(nil,G.consumeables, nil, nil, nil, nil, 'c_ankh', 'sup')
+                            card:add_to_deck()
+                            G.consumeables:emplace(card)
+                            G.GAME.consumeable_buffer = 0
+                        return true
+                    end)}))
+                    card_eval_status_text(context.blueprint_card or self, 'extra', nil, nil, nil, {message = localize('+1 Ankh'), colour = G.C.SECONDARY_SET.Spectral})
+            end
+        end
+    end
+    
+    
+    SMODS.Jokers.j_mf_blasphemy.calculate = function(self, context)
+        if context.cardarea == G.jokers and context.before and not context.blueprint then
+            ease_hands_played(-G.GAME.current_round.hands_left, true)
+        end
+        if SMODS.end_calculate_context(context) then
+            return {
+                message = localize{type='variable',key='a_xmult',vars={4}},
+                Xmult_mod = 4,
+            }
+        end
+    end
+    
+    SMODS.Jokers.j_mf_thesolo.calculate = function(self, context)
+        if context.before and context.full_hand ~= nil and context.cardarea == G.jokers then
+            if #context.full_hand == 1 then
+                self.ability.x_mult = self.ability.x_mult + 0.1
+                return {
+                    message = localize{type='variable',key='a_xmult',vars={self.ability.x_mult}},
+                }
+            end
+        end
+        if SMODS.end_calculate_context(context) then
+            return {
+                message = localize{type='variable',key='a_xmult',vars={self.ability.x_mult}},
+                Xmult_mod = self.ability.x_mult,
+            }
+        end
+    end
+
+    SMODS.Jokers.j_mf_thesolo.loc_def = function(self)
+        return {self.ability.x_mult}
+    end
+    
+    SMODS.Jokers.j_mf_thejester.calculate = function(self, context)
+        if SMODS.end_calculate_context(context) then
+            local multmod = 1
+            for j = 1, #context.scoring_hand do
+                local my_id = context.scoring_hand[j]:get_id()
+                local count = 0
+                for i = 1, #context.scoring_hand do
+                    if context.scoring_hand[i]:get_id() == my_id then
+                        count = count + 1 
+                    end
+                    if count == 2 and i == j then
+                        multmod = multmod * 2
+                        break
+                    end
+                end
+            end
+            if multmod ~= 1 then
+                return {
+                    message = localize{type='variable',key='a_xmult',vars={multmod}},
+                    Xmult_mod = multmod,
+                }
+            end
+        end
+    end
+    
+    SMODS.Jokers.j_mf_globe.calculate = function(self, context)
+        if context.reroll_shop and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+            G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+            G.E_MANAGER:add_event(Event({
+                trigger = 'before',
+                delay = 0.0,
+                func = (function()
+                        local card = create_card('Planet',G.consumeables, nil, nil, nil, nil, nil, '8ba')
+                        card:add_to_deck()
+                        G.consumeables:emplace(card)
+                        G.GAME.consumeable_buffer = 0
+                    return true
+                end)}))
+            return {
+                message = localize('k_plus_planet'),
+                colour = G.C.SECONDARY_SET.Planet,
+                card = self
+            }
+        end
+    end
+    
+    SMODS.Jokers.j_mf_couponcatalogue.calculate = function(self, context)
+        if SMODS.end_calculate_context(context) then
+            local redeemed = 0
+            for k,v in pairs(G.GAME.used_vouchers) do
+                if v == true then
+                    redeemed = redeemed + 1
+                end
+            end
+            return {
+                message = localize{type='variable',key='a_mult',vars={10 * redeemed}},
+                mult_mod = 10 * redeemed
+            }
+        end
+    end
+
+    SMODS.Jokers.j_mf_couponcatalogue.loc_def = function(self)
+        local redeemed = 0
+        for k,v in pairs(G.GAME.used_vouchers) do
+            if v == true then
+                redeemed = redeemed + 1
+            end
+        end
+        return {redeemed * 10}
+    end
+    
+    SMODS.Jokers.j_mf_ace.calculate = function(self, context)
+        if context.after and G.GAME.current_round.hands_left == 1 and context.cardarea == G.jokers then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    local _suit, _rank = nil, nil
+                    _rank = 'A'
+                    _suit = pseudorandom_element({'S','H','D','C'}, pseudoseed('aceupthesleeve_create'))
+                    local cen_pool = {}
+                    for k, v in pairs(G.P_CENTER_POOLS["Enhanced"]) do
+                        if v.key ~= 'm_stone' then 
+                            cen_pool[#cen_pool+1] = v
+                        end
+                    end
+                    local card = create_playing_card({front = G.P_CARDS[_suit..'_'.._rank], center = pseudorandom_element(cen_pool, pseudoseed('spe_card'))}, G.hand, nil, false, {G.C.SECONDARY_SET.Spectral})
+                    playing_card_joker_effects({card})
+                    return true end }))
+        end
+    end
+    
+    SMODS.Jokers.j_mf_fleshprison.calculate = function(self, context)
+        if context.setting_blind and not context.blueprint and context.blind.boss and not self.getting_sliced then
+            self.gone = false
+            G.GAME.blind.chips = G.GAME.blind.chips * 2
+            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+            G.HUD_blind:recalculate(true)
+            G.E_MANAGER:add_event(Event({func = function()
+                G.E_MANAGER:add_event(Event({func = function()
+                    play_sound('timpani')
+                    delay(0.4)
+                    return true end }))
+                card_eval_status_text(self, 'extra', nil, nil, nil, {message = 'Good luck!'})
+            return true end }))
+        end
+        if context.end_of_round and not context.individual and not context.repetition and not context.blueprint and G.GAME.blind.boss and not self.gone then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'before',
+                delay = 0.0,
+                func = (function()
+                        local card = create_card(nil,G.consumeables, nil, nil, nil, nil, 'c_soul', 'sup')
+                        card:set_edition({negative = true}, true)
+                        card:add_to_deck()
+                        G.consumeables:emplace(card)
+                    return true
+                end)}))
+            if not self.ability.eternal then
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        play_sound('tarot1')
+                        self.T.r = -0.2
+                        self:juice_up(0.3, 0.4)
+                        self.states.drag.is = true
+                        self.children.center.pinch.x = true
+                        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.3, blockable = false,
+                            func = function()
+                                    G.jokers:remove_card(self)
+                                    self:remove()
+                                    self = nil
+                                return true; end})) 
+                        return true
+                    end
+                })) 
+            end
+            self.gone = true
+        end
+    end
+    
+    SMODS.Jokers.j_mf_goldencarrot.calculate = function(self, context)
+        if context.after and not context.blueprint and context.cardarea == G.jokers and not self.gone then
+            if self.ability.extra - 1 <= 0 then 
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        play_sound('tarot1')
+                        self.T.r = -0.2
+                        self:juice_up(0.3, 0.4)
+                        self.states.drag.is = true
+                        self.children.center.pinch.x = true
+                        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.3, blockable = false,
+                            func = function()
+                                    G.jokers:remove_card(self)
+                                    self:remove()
+                                    self = nil
+                                return true; end})) 
+                        return true
+                    end
+                })) 
+                return {
+                    message = localize('k_eaten_ex'),
+                    colour = G.C.MONEY
+                }
+            else
+                self.ability.extra = self.ability.extra - 1
+                return {
+                    message = "$"..self.ability.extra,
+                    colour = G.C.MONEY
+                }
+            end
+        end
+    end
+
+    SMODS.Jokers.j_mf_goldencarrot.loc_def = function(self)
+        return {self.ability.extra, 1}
+    end
+    
+    SMODS.Jokers.j_mf_bowlingball.calculate = function(self, context)
+        if context.individual and context.cardarea == G.play then
+            if context.other_card:get_id() == 3 then
+                return {
+                    chips = 60,
+                    mult = 10,
+                    card = self
+                }
+            end
+        end
+    end
+    
+    SMODS.Jokers.j_mf_simplified.calculate = function(self, context)
+        if context.other_joker and context.other_joker.config.center.rarity == 1 and self ~= context.other_joker then
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    context.other_joker:juice_up(0.5, 0.5)
+                    return true
+                end
+            })) 
+            return {
+                message = localize{type='variable',key='a_mult',vars={4}},
+                mult_mod = 4
+            }
+        end
+    end
+
+    SMODS.Jokers.j_mf_jankman.calculate = function(self, context)
+        local vanilla_jokers = {"j_joker", "j_greedy_joker", "j_lusty_joker", "j_wrathful_joker", "j_gluttenous_joker", "j_jolly", "j_zany", "j_mad", "j_crazy", "j_droll", "j_sly", "j_wily", "j_clever", "j_devious", "j_crafty", "j_half", "j_stencil", "j_four_fingers", "j_mime", "j_credit_card", "j_ceremonial", "j_banner", "j_mystic_summit", "j_marble", "j_loyalty_card", "j_8_ball", "j_misprint", "j_dusk", "j_raised_fist", "j_chaos", "j_fibonacci", "j_steel_joker", "j_scary_face", "j_abstract", "j_delayed_grat", "j_hack", "j_pareidolia", "j_gros_michel", "j_even_steven", "j_odd_todd", "j_scholar", "j_business", "j_supernova", "j_ride_the_bus", "j_space", "j_egg", "j_burglar", "j_blackboard", "j_runner", "j_ice_cream", "j_dna", "j_splash", "j_blue_joker", "j_sixth_sense", "j_constellation", "j_hiker", "j_faceless", "j_green_joker", "j_superposition", "j_todo_list", "j_cavendish", "j_card_sharp", "j_red_card", "j_madness", "j_square", "j_seance", "j_riff_raff", "j_vampire", "j_shortcut", "j_hologram", "j_vagabond", "j_baron", "j_cloud_9", "j_rocket", "j_obelisk", "j_midas_mask", "j_luchador", "j_photograph", "j_gift", "j_turtle_bean", "j_erosion", "j_reserved_parking", "j_mail", "j_to_the_moon", "j_hallucination", "j_fortune_teller", "j_juggler", "j_drunkard", "j_stone", "j_golden", "j_lucky_cat", "j_baseball", "j_bull", "j_diet_cola", "j_trading", "j_flash", "j_popcorn", "j_trousers", "j_ancient", "j_ramen", "j_walkie_talkie", "j_selzer", "j_castle", "j_smiley", "j_campfire", "j_ticket", "j_mr_bones", "j_acrobat", "j_sock_and_buskin", "j_swashbuckler", "j_troubadour", "j_certificate", "j_smeared", "j_throwback", "j_hanging_chad", "j_rough_gem", "j_bloodstone", "j_arrowhead", "j_onyx_agate", "j_glass", "j_ring_master", "j_flower_pot", "j_blueprint", "j_wee", "j_merry_andy", "j_oops", "j_idol", "j_seeing_double", "j_matador", "j_hit_the_road", "j_duo", "j_trio", "j_family", "j_order", "j_tribe", "j_stuntman", "j_invisible", "j_brainstorm", "j_satellite", "j_shoot_the_moon", "j_drivers_license", "j_cartomancer", "j_astronomer", "j_burnt", "j_bootstraps", "j_caino", "j_triboulet", "j_yorick", "j_chicot", "j_perkeo"}
+        if context.other_joker and self ~= context.other_joker then
+            local real = true
+            for i, k in pairs(vanilla_jokers) do
+                if k == context.other_joker.config.center.key then
+                    real = false
+                    break
+                end
+            end
+            if real then
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        context.other_joker:juice_up(0.5, 0.5)
+                        return true
+                    end
+                })) 
+                return {
+                    message = localize{type='variable',key='a_xmult',vars={1.5}},
+                    Xmult_mod = 1.5
+                }
+            end
+        end
+    end
+    
+    SMODS.Jokers.j_mf_pixeljoker.calculate = function(self, context)
+        if context.individual and context.cardarea == G.play then
+            if context.other_card:get_id() == 14 or context.other_card:get_id() == 4 or context.other_card:get_id() == 9 then
+                return {
+                    x_mult = 1.5,
+                    colour = G.C.RED,
+                    card = self
+                }
+            end
+        end
+    end
+
+    -- challenge for testing.
+    local challenges = G.CHALLENGES
+
+	G.localization.misc.challenge_names["c_mod_morefluff_testing"] = "testing challenge"
+    table.insert(G.CHALLENGES,#G.CHALLENGES+1,{
+        name = 'testing challenge', 
+        id = 'c_mod_morefluff_testing',
+        rules = {
+            custom = {
+            },
+            modifiers = {
+                {id = 'dollars', value = 9999},
+                {id = 'discards', value = 9999},
+                {id = 'hands', value = 9999},
+                {id = 'reroll_cost', value = -9999},
+                {id = 'joker_slots', value = 9999},
+                {id = 'consumable_slots', value = 9999},
+                {id = 'hand_size', value = 8},
+            }
+        },
+        jokers = {
+            {id = 'j_mf_bowlingball'},
+            {id = 'j_mf_pixeljoker'},
+        },
+        consumeables = {
+        },
+        vouchers = {
+        },
+        deck = {
+            --enhancement = 'm_glass',
+            --edition = 'foil',
+            --gold_seal = true,
+            --yes_ranks = {['3'] = true,T = true},
+            --no_ranks = {['4'] = true},
+            --yes_suits = {S=true},
+            --no_suits = {D=true},
+            -- cards = {},
+            type = 'Challenge Deck'
+        },
+        restrictions = {
+            banned_cards = {
+            },
+            banned_tags = {
+                -- {id = 'tag_garbage'},
+                -- {id = 'tag_handy'},
+            },
+            banned_other = {
+
+            }
+        }
+    })
 end
 
 local card_calculate_dollar_bonus_ref = Card.calculate_dollar_bonus
@@ -1399,6 +1894,11 @@ function Card.calculate_dollar_bonus(self)
         if self.ability.name == 'Style Meter' then
             if G.GAME.skips > 0 then
                 return G.GAME.skips * 3
+            end
+        end
+        if self.ability.name == 'Golden Carrot' then
+            if self.ability.extra >= 0 then
+                return self.ability.extra + 2
             end
         end
     end
@@ -1436,8 +1936,8 @@ function Card.set_ability(self, center, initial, delay_sprites)
     if center.name == "Pixel Joker" then 
         -- H = H*2
         -- W = W*2
-        self.T.h = self.T.h * (4 / 95)
-        self.T.w = self.T.w * (4 / 71)
+        self.T.h = self.T.h * (16 / 95)
+        self.T.w = self.T.w * (16 / 71)
     end
 end 
 
@@ -1450,11 +1950,10 @@ function Card.add_to_deck(self, from_debuff)
         if self.ability.name == 'Hollow Joker' then
             G.hand:change_size(-1)
         end
-        if self.ability.name == 'Miner' then
-            G.E_MANAGER:add_event(Event({func = function()
-                G.GAME.round_resets.reroll_cost = G.GAME.round_resets.reroll_cost - 1
-                G.GAME.current_round.reroll_cost = math.max(0, G.GAME.current_round.reroll_cost - 1)
-                return true end }))
+        if self.ability.name == "Philosophical Joker" then
+            if G.jokers then 
+                G.jokers.config.card_limit = G.jokers.config.card_limit + 1
+            end
         end
     end
     Card_add_to_deck_ref(self, from_debuff)
@@ -1469,11 +1968,10 @@ function Card.remove_from_deck(self, from_debuff)
         if self.ability.name == 'Hollow Joker' then
             G.hand:change_size(1)
         end
-        if self.ability.name == 'Miner' then
-            G.E_MANAGER:add_event(Event({func = function()
-                G.GAME.round_resets.reroll_cost = G.GAME.round_resets.reroll_cost + 1
-                G.GAME.current_round.reroll_cost = math.max(0, G.GAME.current_round.reroll_cost + 1)
-                return true end }))
+        if self.ability.name == "Philosophical Joker" then
+            if G.jokers then 
+                G.jokers.config.card_limit = G.jokers.config.card_limit - 1
+            end
         end
     end
     Card_remove_from_deck_ref(self, from_debuff)
