@@ -8,6 +8,19 @@
 ----------------------------------------------
 ------------MOD CODE -------------------------
 
+function randomFromTable(source)
+    local keys = {} 
+
+    for k in pairs(source) do
+        table.insert(keys, k)
+    end
+    
+    local choiceIndex = math.random(1,#keys) 
+    local choiceKey = keys[choiceIndex] 
+    local choice = source[choiceKey]
+    return {key = choiceKey, value = choice}
+end
+
 function SMODS.INIT.MoreFluff()
 
     sendDebugMessage("morefluff incorporated")
@@ -1170,11 +1183,7 @@ function SMODS.INIT.MoreFluff()
             if #unsealed > 0 then
                 local conv_card = pseudorandom_element(unsealed, pseudoseed('seal_the_deal_card'))
                 local seal = ""
-                local seal_type = pseudorandom(pseudoseed('seal_the_deal_seal'))
-                if seal_type > 0.75 then seal = 'Red'
-                elseif seal_type > 0.5 then seal = 'Blue'
-                elseif seal_type > 0.25 then seal = 'Gold'
-                else seal = 'Purple' end
+                seal=randomFromTable(G.P_SEALS)
 
                 G.E_MANAGER:add_event(Event({func = function()
                     play_sound('tarot1')
@@ -1182,7 +1191,7 @@ function SMODS.INIT.MoreFluff()
                     return true end }))
                 
                 G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
-                    conv_card:set_seal(seal, nil, true)
+                    conv_card:set_seal(seal.key, nil, true)
                     return true end }))
 
                 return {
