@@ -394,6 +394,15 @@ function SMODS.INIT.MoreFluff()
                 "{X:mult,C:white} X1.5 {} Mult when scored"
             },
         },
+        -- mf_burnerphone = {
+        --     name = "Burner Phone",
+        --     text = {
+        --         "Shows the top card",
+        --         "of the deck, and gives",
+        --         "{C:mult}Mult{} equal to its rank"
+        --         "(Currently #1#)"
+        --     },
+        -- },
         -- mf_e = {
         --     name = "Specific Alphabet Joker",
         --     text = {
@@ -685,6 +694,12 @@ function SMODS.INIT.MoreFluff()
             { x = 0, y = 0 }, "",
             3, 9, true, true, true, true
         ),
+        -- mf_burnerphone = SMODS.Joker:new(
+        --     "Burner Phone", "",
+        --     { },
+        --     { x = 0, y = 0 }, "",
+        --     1, 3, true, true, false, true
+        -- ),
         -- mf_e = SMODS.Joker:new(
         --     "E Joker", "",
         --     { extra = 0 },
@@ -696,6 +711,7 @@ function SMODS.INIT.MoreFluff()
     local jokerBlacklists = {
     }
     local no_art_yet = {
+        mf_burnerphone = true
     }
 
     local joker_order_thing = {}
@@ -1833,57 +1849,57 @@ function SMODS.INIT.MoreFluff()
         end
     end
 
-    -- challenge for testing.
-    local challenges = G.CHALLENGES
+    -- -- challenge for testing.
+    -- local challenges = G.CHALLENGES
 
-	G.localization.misc.challenge_names["c_mod_morefluff_testing"] = "testing challenge"
-    table.insert(G.CHALLENGES,#G.CHALLENGES+1,{
-        name = 'testing challenge', 
-        id = 'c_mod_morefluff_testing',
-        rules = {
-            custom = {
-            },
-            modifiers = {
-                {id = 'dollars', value = 9999},
-                {id = 'discards', value = 9999},
-                {id = 'hands', value = 9999},
-                {id = 'reroll_cost', value = -9999},
-                {id = 'joker_slots', value = 9999},
-                {id = 'consumable_slots', value = 9999},
-                {id = 'hand_size', value = 8},
-            }
-        },
-        jokers = {
-            {id = 'j_mf_bowlingball'},
-            {id = 'j_mf_pixeljoker'},
-        },
-        consumeables = {
-        },
-        vouchers = {
-        },
-        deck = {
-            --enhancement = 'm_glass',
-            --edition = 'foil',
-            --gold_seal = true,
-            --yes_ranks = {['3'] = true,T = true},
-            --no_ranks = {['4'] = true},
-            --yes_suits = {S=true},
-            --no_suits = {D=true},
-            -- cards = {},
-            type = 'Challenge Deck'
-        },
-        restrictions = {
-            banned_cards = {
-            },
-            banned_tags = {
-                -- {id = 'tag_garbage'},
-                -- {id = 'tag_handy'},
-            },
-            banned_other = {
+	-- G.localization.misc.challenge_names["c_mod_morefluff_testing"] = "testing challenge"
+    -- table.insert(G.CHALLENGES,#G.CHALLENGES+1,{
+    --     name = 'testing challenge', 
+    --     id = 'c_mod_morefluff_testing',
+    --     rules = {
+    --         custom = {
+    --         },
+    --         modifiers = {
+    --             {id = 'dollars', value = 9999},
+    --             {id = 'discards', value = 9999},
+    --             {id = 'hands', value = 9999},
+    --             {id = 'reroll_cost', value = -9999},
+    --             {id = 'joker_slots', value = 9999},
+    --             {id = 'consumable_slots', value = 9999},
+    --             {id = 'hand_size', value = 8},
+    --         }
+    --     },
+    --     jokers = {
+    --         {id = 'j_mf_bowlingball'},
+    --         {id = 'j_mf_pixeljoker'},
+    --     },
+    --     consumeables = {
+    --     },
+    --     vouchers = {
+    --     },
+    --     deck = {
+    --         --enhancement = 'm_glass',
+    --         --edition = 'foil',
+    --         --gold_seal = true,
+    --         --yes_ranks = {['3'] = true,T = true},
+    --         --no_ranks = {['4'] = true},
+    --         --yes_suits = {S=true},
+    --         --no_suits = {D=true},
+    --         -- cards = {},
+    --         type = 'Challenge Deck'
+    --     },
+    --     restrictions = {
+    --         banned_cards = {
+    --         },
+    --         banned_tags = {
+    --             -- {id = 'tag_garbage'},
+    --             -- {id = 'tag_handy'},
+    --         },
+    --         banned_other = {
 
-            }
-        }
-    })
+    --         }
+    --     }
+    -- })
 end
 
 local card_calculate_dollar_bonus_ref = Card.calculate_dollar_bonus
