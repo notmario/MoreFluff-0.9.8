@@ -12,6 +12,59 @@
 
   font-family: 'm6x11plus';
   text-shadow: #000 2px 2px 2px;
+  text-decoration: none;
+}
+
+.logostuff {
+  position:relative;
+  width: 100vw;
+  height: calc(483px + 4rem);
+}
+
+.logo, .logobg {
+  height: 483px;
+  image-rendering: pixelated;
+  margin: 0 auto;
+  position: absolute;
+}
+.logobg {
+  top: 2rem;
+  width: 100vw;
+  object-fit: cover;
+  object-position: center;
+}
+.logo {
+  left: calc(-393px + 50vw);
+  top: 2rem;
+  filter: drop-shadow(0px 0px 8px black);
+}
+@media screen and (max-width: 786px) {
+  .logo, .logobg {
+    height: 322px;
+  }
+  .logo {
+    left: calc(-262px + 50vw);
+  }
+
+  .logostuff {
+    position:relative;
+    width: 100vw;
+    height: calc(322px + 2rem);
+  }
+}
+@media screen and (max-width: 524px) {
+  .logo, .logobg {
+    height: 161px;
+  }
+  .logo {
+    left: calc(-131px + 50vw);
+  }
+
+  .logostuff {
+    position:relative;
+    width: 100vw;
+    height: calc(161px + 1rem);
+  }
 }
 
 .bg {
@@ -40,10 +93,20 @@ h1 {
   margin-bottom: 1rem;
 }
 
-.jokers {
+.cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   gap: 1rem;
+}
+.cards.consumables, .cards.packs, .cards.decks, .cards.blinds {
+  width: calc( (100% - 4rem) * 0.8 + 3rem);
+  margin: 0 auto;
+}
+.cards.extras {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 .joker {
   display: flex;
@@ -59,6 +122,14 @@ h1 {
 .joker .text {
   font-size: 1.25rem;
 }
+.joker a, .joker a:visited {
+  color: #ff9a00;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.joker a:hover:not(:active) {
+  color: white !important;
+}
 .joker img {
   height: 190px;
   image-rendering: pixelated;
@@ -68,6 +139,33 @@ h1 {
 }
 .joker.pixeljoker img {
   height: 32px;
+  margin: 79px 55px;
+}
+.joker.mouthmoods img {
+  height: 142px;
+  margin: 24px 0px;
+}
+.consumables .joker img {
+  height: 174px;
+  width: 142px;
+  object-fit: cover;
+  object-position: top;
+}
+img.hasback {
+  background-image: url("img/sticker_bg.png");
+
+  background-size: 142px 190px;
+}
+@keyframes blind-animate {
+  from {object-position: 0px 0px}
+  to {object-position: -2720px 0px}
+}
+.blinds .joker img {
+  width: 136px;
+  height: 136px;
+  object-fit: cover;
+  animation: blind-animate 2.1s linear infinite;
+  animation-timing-function: steps(20, start);
 }
 
 #download {
@@ -85,7 +183,6 @@ h1 {
   border-radius: 8px;
   padding: 8px;
 }
-
 .soulholder {
   width: 142px;
   height: 190px;
@@ -114,4 +211,24 @@ h1 {
   object-position: top;
   top: 0;
   left: 0;
+}
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  background-color: #374244;
+  color: white;
+  padding: 1rem;
+  border: 2px solid white;
+  border-radius: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: larger;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
 }
