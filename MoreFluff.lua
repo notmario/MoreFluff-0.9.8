@@ -3645,8 +3645,8 @@ function SMODS.INIT.MoreFluff()
                         end
                     })) 
                     return {
-                        message = localize{type='variable',key='a_xmult',vars={1.5}},
-                        Xmult_mod = 1.5
+                        message = localize{type='variable',key='a_xmult',vars={1.25}},
+                        Xmult_mod = 1.25
                     }
                 end
             end
