@@ -905,149 +905,151 @@ function Card:use_consumeable(area, copier)
 --       return true end)}))
 --     end
 --   else
-    if self.ability.name == "White" or self.ability.name == "Tan" or self.ability.name == "Blue" or self.ability.name == "Lilac" then
-        local card_type = 
-            (self.ability.name == "White" and "Colour") or
-            (self.ability.name == "Tan" and "Alchemical") or
-            (self.ability.name == "Blue" and "Planet") or
-            (self.ability.name == "Lilac" and "Tarot")
-        local rng_seed = 
-            (self.ability.name == "White" and "whi") or
-            (self.ability.name == "Tan" and "tan") or
-            (self.ability.name == "Blue" and "blu") or
-            (self.ability.name == "Lilac" and "lil")
-        for i = 1, self.ability.extra do
-            G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-                play_sound('timpani')
-                local card = create_card(card_type, G.consumeables, nil, nil, nil, nil, nil, rng_seed)
-                card:add_to_deck()
-                card:set_edition({negative = true}, true)
-                G.consumeables:emplace(card)
-                self:juice_up(0.3, 0.5)
-                return true end }))
+    if self.ability.set == "Colour" then
+        if self.ability.name == "White" or self.ability.name == "Tan" or self.ability.name == "Blue" or self.ability.name == "Lilac" then
+            local card_type = 
+                (self.ability.name == "White" and "Colour") or
+                (self.ability.name == "Tan" and "Alchemical") or
+                (self.ability.name == "Blue" and "Planet") or
+                (self.ability.name == "Lilac" and "Tarot")
+            local rng_seed = 
+                (self.ability.name == "White" and "whi") or
+                (self.ability.name == "Tan" and "tan") or
+                (self.ability.name == "Blue" and "blu") or
+                (self.ability.name == "Lilac" and "lil")
+            for i = 1, self.ability.extra do
+                G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+                    play_sound('timpani')
+                    local card = create_card(card_type, G.consumeables, nil, nil, nil, nil, nil, rng_seed)
+                    card:add_to_deck()
+                    card:set_edition({negative = true}, true)
+                    G.consumeables:emplace(card)
+                    self:juice_up(0.3, 0.5)
+                    return true end }))
+            end
+            delay(0.6)
         end
-        delay(0.6)
-    end
-    if self.ability.name == "Peach" then
-        for i = 1, self.ability.extra do
-            G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-                play_sound('timpani')
-                local card = create_card(nil,G.consumeables, nil, nil, nil, nil, 'c_soul', 'sup')
-                card:add_to_deck()
-                card:set_edition({negative = true}, true)
-                G.consumeables:emplace(card)
-                self:juice_up(0.3, 0.5)
-                return true end }))
+        if self.ability.name == "Peach" then
+            for i = 1, self.ability.extra do
+                G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+                    play_sound('timpani')
+                    local card = create_card(nil,G.consumeables, nil, nil, nil, nil, 'c_soul', 'sup')
+                    card:add_to_deck()
+                    card:set_edition({negative = true}, true)
+                    G.consumeables:emplace(card)
+                    self:juice_up(0.3, 0.5)
+                    return true end }))
+            end
+            delay(0.6)
         end
-        delay(0.6)
-    end
-    if self.ability.name == "Black" then
-        for i = 1, self.ability.extra do
-            G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+        if self.ability.name == "Black" then
+            for i = 1, self.ability.extra do
+                G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+                    local temp_pool = {}
+                    for k, v in pairs(G.jokers.cards) do
+                        if v.ability.set == 'Joker' and (not v.edition) then
+                            table.insert(temp_pool, v)
+                        end
+                    end
+                    local over = false
+                    local eligible_card = pseudorandom_element(temp_pool, pseudoseed("black"))
+                    local edition = {negative = true}
+                    eligible_card:set_edition(edition, true)
+                    check_for_unlock({type = 'have_edition'})
+                    self:juice_up(0.3, 0.5)
+                return true end }))
+            end
+            delay(0.6)
+        end
+        if self.ability.name == "Red" or self.ability.name == "Orange" or self.ability.name == "Deep Blue" or self.ability.name == "Seaweed" then
+            local suit = 
+                (self.ability.name == "Red" and "Hearts") or
+                (self.ability.name == "Orange" and "Diamonds") or
+                (self.ability.name == "Deep Blue" and "Clubs") or
+                (self.ability.name == "Seaweed" and "Spades")
+            local rng_seed = 
+                (self.ability.name == "Red" and "red") or
+                (self.ability.name == "Orange" and "ora") or
+                (self.ability.name == "Deep Blue" and "dee") or
+                (self.ability.name == "Seaweed" and "sea")
+            
+            local blacklist = {}
+            for i = 1, self.ability.extra do
                 local temp_pool = {}
-                for k, v in pairs(G.jokers.cards) do
-                    if v.ability.set == 'Joker' and (not v.edition) then
+                for k, v in pairs(G.hand.cards) do
+                    if not v:is_suit(suit) and not blacklist[v] then
                         table.insert(temp_pool, v)
                     end
                 end
                 local over = false
-                local eligible_card = pseudorandom_element(temp_pool, pseudoseed("black"))
-                local edition = {negative = true}
-                eligible_card:set_edition(edition, true)
-                check_for_unlock({type = 'have_edition'})
+                if #temp_pool == 0 then
+                    break
+                end
+                local eligible_card = pseudorandom_element(temp_pool, pseudoseed(rng_seed))
+                blacklist[eligible_card] = true
+                G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.15,func = function() eligible_card:flip();play_sound('card1', 1);eligible_card:juice_up(0.3, 0.3);return true end }))
+                G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.4,func = function() eligible_card:flip();play_sound('tarot2', percent);eligible_card:change_suit(suit);return true end }))
                 self:juice_up(0.3, 0.5)
-            return true end }))
-        end
-        delay(0.6)
-    end
-    if self.ability.name == "Red" or self.ability.name == "Orange" or self.ability.name == "Deep Blue" or self.ability.name == "Seaweed" then
-        local suit = 
-            (self.ability.name == "Red" and "Hearts") or
-            (self.ability.name == "Orange" and "Diamonds") or
-            (self.ability.name == "Deep Blue" and "Clubs") or
-            (self.ability.name == "Seaweed" and "Spades")
-        local rng_seed = 
-            (self.ability.name == "Red" and "red") or
-            (self.ability.name == "Orange" and "ora") or
-            (self.ability.name == "Deep Blue" and "dee") or
-            (self.ability.name == "Seaweed" and "sea")
-        
-        local blacklist = {}
-        for i = 1, self.ability.extra do
-            local temp_pool = {}
-            for k, v in pairs(G.hand.cards) do
-                if not v:is_suit(suit) and not blacklist[v] then
-                    table.insert(temp_pool, v)
-                end
             end
-            local over = false
-            if #temp_pool == 0 then
-                break
+            delay(0.6)
+        end
+        if self.ability.name == "Crimson" or self.ability.name == "Silver" or self.ability.name == "Grey" or self.ability.name == "Green" then
+            local tag_type = 
+                (self.ability.name == "Crimson" and "tag_rare") or
+                (self.ability.name == "Green" and "tag_d_six") or
+                (self.ability.name == "Silver" and "tag_polychrome") or
+                (self.ability.name == "Grey" and "tag_double")
+            for i = 1, self.ability.extra do
+                G.E_MANAGER:add_event(Event({
+                    func = (function()
+                        add_tag(Tag(tag_type))
+                        play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
+                        play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
+                        return true
+                    end)
+                }))
+                delay(0.2)
             end
-            local eligible_card = pseudorandom_element(temp_pool, pseudoseed(rng_seed))
-            blacklist[eligible_card] = true
-            G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.15,func = function() eligible_card:flip();play_sound('card1', 1);eligible_card:juice_up(0.3, 0.3);return true end }))
-            G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.4,func = function() eligible_card:flip();play_sound('tarot2', percent);eligible_card:change_suit(suit);return true end }))
-            self:juice_up(0.3, 0.5)
+            delay(0.6)
         end
-        delay(0.6)
-    end
-    if self.ability.name == "Crimson" or self.ability.name == "Silver" or self.ability.name == "Grey" or self.ability.name == "Green" then
-        local tag_type = 
-            (self.ability.name == "Crimson" and "tag_rare") or
-            (self.ability.name == "Green" and "tag_d_six") or
-            (self.ability.name == "Silver" and "tag_polychrome") or
-            (self.ability.name == "Grey" and "tag_double")
-        for i = 1, self.ability.extra do
-            G.E_MANAGER:add_event(Event({
-                func = (function()
-                    add_tag(Tag(tag_type))
-                    play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
-                    play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
-                    return true
-                end)
-            }))
-            delay(0.2)
+        if self.ability.name == "Pink" then
+            n_random_colour_rounds(self.ability.extra)
+            delay(0.6)
         end
-        delay(0.6)
-    end
-    if self.ability.name == "Pink" then
-        n_random_colour_rounds(self.ability.extra)
-        delay(0.6)
-    end
-    if self.ability.name == "Brown" then
-        local temp_hand = {}
-        local destroyed_cards = {}
-        for k, v in ipairs(G.hand.cards) do temp_hand[#temp_hand+1] = v end
-        table.sort(temp_hand, function (a, b) return not a.playing_card or not b.playing_card or a.playing_card < b.playing_card end)
-        pseudoshuffle(temp_hand, pseudoseed('immolate'))
+        if self.ability.name == "Brown" then
+            local temp_hand = {}
+            local destroyed_cards = {}
+            for k, v in ipairs(G.hand.cards) do temp_hand[#temp_hand+1] = v end
+            table.sort(temp_hand, function (a, b) return not a.playing_card or not b.playing_card or a.playing_card < b.playing_card end)
+            pseudoshuffle(temp_hand, pseudoseed('immolate'))
 
-        for i = 1, math.min(#temp_hand, self.ability.extra) do destroyed_cards[#destroyed_cards+1] = temp_hand[i] end
+            for i = 1, math.min(#temp_hand, self.ability.extra) do destroyed_cards[#destroyed_cards+1] = temp_hand[i] end
 
-        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-            play_sound('tarot1')
-            self:juice_up(0.3, 0.5)
-            return true end }))
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.1,
-            func = function() 
-                for i=#destroyed_cards, 1, -1 do
-                    local card = destroyed_cards[i]
-                    if card.ability.name == 'Glass Card' then 
-                        card:shatter()
-                    else
-                        card:start_dissolve(nil, i == #destroyed_cards)
-                    end
-                end
+            G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+                play_sound('tarot1')
+                self:juice_up(0.3, 0.5)
                 return true end }))
-        delay(0.5)
-        ease_dollars(2 * self.ability.extra)
-        delay(0.3)
-        for i = 1, #G.jokers.cards do
-            G.jokers.cards[i]:calculate_joker({remove_playing_cards = true, removed = destroyed_cards})
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function() 
+                    for i=#destroyed_cards, 1, -1 do
+                        local card = destroyed_cards[i]
+                        if card.ability.name == 'Glass Card' then 
+                            card:shatter()
+                        else
+                            card:start_dissolve(nil, i == #destroyed_cards)
+                        end
+                    end
+                    return true end }))
+            delay(0.5)
+            ease_dollars(2 * self.ability.extra)
+            delay(0.3)
+            for i = 1, #G.jokers.cards do
+                G.jokers.cards[i]:calculate_joker({remove_playing_cards = true, removed = destroyed_cards})
+            end
+            delay(0.6)
         end
-        delay(0.6)
     end
 --   end
 end
