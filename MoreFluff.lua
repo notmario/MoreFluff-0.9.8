@@ -965,8 +965,8 @@ function Card:use_consumeable(area, copier)
             local suit = 
                 (self.ability.name == "Red" and "Hearts") or
                 (self.ability.name == "Orange" and "Diamonds") or
-                (self.ability.name == "Deep Blue" and "Clubs") or
-                (self.ability.name == "Seaweed" and "Spades")
+                (self.ability.name == "Deep Blue" and "Spades") or
+                (self.ability.name == "Seaweed" and "Clubs")
             local rng_seed = 
                 (self.ability.name == "Red" and "red") or
                 (self.ability.name == "Orange" and "ora") or
@@ -2357,7 +2357,7 @@ function SMODS.INIT.MoreFluff()
     SMODS.Sprite:new("v_mf_paintroller", SMODS.findModByID("MoreFluff").path, "v_mf_paintroller.png", 71, 95, "asset_atli"):register();
     paintroller:register()
 
-    local colourtheory = SMODS.Voucher:new("Colour Theory", "mf_colourtheory", {}, { x = 0, y = 0 }, localization["v_mf_colourtheory"], 10, true, true, {"v_mf_paintroller"})
+    local colourtheory = SMODS.Voucher:new("Colour Theory", "mf_colourtheory", {}, { x = 0, y = 0 }, localization["v_mf_colourtheory"], 10, true, true, true, {"v_mf_paintroller"})
     SMODS.Sprite:new("v_mf_colourtheory", SMODS.findModByID("MoreFluff").path, "v_mf_colourtheory.png", 71, 95, "asset_atli"):register();
     colourtheory:register()
 
