@@ -1892,7 +1892,7 @@ function SMODS.INIT.MoreFluff()
             "Box of Hands", "",
             { },
             { x = 0, y = 0 }, "",
-            2, 6, true, true, false, true
+            2, 6, true, true, false, false
         ),
         mf_hallofmirrors = SMODS.Joker:new(
             "Hall of Mirrors", "",
@@ -1916,7 +1916,7 @@ function SMODS.INIT.MoreFluff()
             "Glitter Bomb", "",
             { },
             { x = 0, y = 0 }, "",
-            3, 14, true, true, false, true
+            3, 14, true, true, false, false
         ),
         mf_basepaulcard = SMODS.Joker:new(
             "Basepaul Card", "",
@@ -1994,7 +1994,7 @@ function SMODS.INIT.MoreFluff()
             "Treasure Map", "",
             { extra = 0 },
             { x = 0, y = 0 }, "",
-            1, 4, true, true, false, true
+            1, 4, true, true, false, false
         ),
         mf_expansionpack = SMODS.Joker:new(
             "Expansion Pack", "",
@@ -2348,8 +2348,8 @@ function SMODS.INIT.MoreFluff()
     SMODS.Sprite:new("colour_booster_atlas", SMODS.findModByID("MoreFluff").path, "colour_booster_atlas.png", 71, 95, "asset_atli"):register();
     MoreFluff.Booster:new("Colour Pack", "colour_normal_1", {extra = 2, choose = 1}, { x = 0, y = 0 }, 4, true, 1, "Celestial", "colour_booster_atlas"):register()
     MoreFluff.Booster:new("Colour Pack", "colour_normal_2", {extra = 2, choose = 1}, { x = 1, y = 0 }, 4, true, 1, "Celestial", "colour_booster_atlas"):register()
-    MoreFluff.Booster:new("Jumbo Colour Pack", "alchemy_jumbo_1", {extra = 4, choose = 1}, { x = 2, y = 0 }, 6, true, 1, "Celestial", "colour_booster_atlas"):register()
-    MoreFluff.Booster:new("Mega Colour Pack", "alchemy_mega_1", {extra = 4, choose = 2}, { x = 3, y = 0 }, 8, true, 0.25, "Celestial", "colour_booster_atlas"):register()
+    MoreFluff.Booster:new("Jumbo Colour Pack", "colour_jumbo_1", {extra = 4, choose = 1}, { x = 2, y = 0 }, 6, true, 1, "Celestial", "colour_booster_atlas"):register()
+    MoreFluff.Booster:new("Mega Colour Pack", "colour_mega_1", {extra = 4, choose = 2}, { x = 3, y = 0 }, 8, true, 0.25, "Celestial", "colour_booster_atlas"):register()
 
     local paintroller = SMODS.Voucher:new("Paint Roller", "mf_paintroller", {}, { x = 0, y = 0 }, localization["v_mf_paintroller"], 10, true, true)
     SMODS.Sprite:new("v_mf_paintroller", SMODS.findModByID("MoreFluff").path, "v_mf_paintroller.png", 71, 95, "asset_atli"):register();
