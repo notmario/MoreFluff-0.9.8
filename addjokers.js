@@ -778,6 +778,61 @@ let consumables = [
 
 let extras = [
   {
+    name: "Amber",
+    text: [
+      "Converts a random card in",
+      "hand to {C:fleurons}Fleurons{} for every",
+      "round this has been held",
+      '(<a href="https://github.com/Firch/Bunco">Also try Bunco!</a>)'
+    ],
+    image_url: "assets/1x/c_mf_amber.png",
+    rarity: "Colour"
+  },
+  {
+    name: "Amethyst",
+    text: [
+      "Converts a random card in",
+      "hand to {C:halberds}Halberds{} for every",
+      "round this has been held",
+      '(<a href="https://github.com/Firch/Bunco">Also try Bunco!</a>)'
+    ],
+    image_url: "assets/1x/c_mf_amethyst.png",
+    rarity: "Colour"
+  },
+  {
+    name: "Magenta",
+    text: [
+      "Converts a random card in",
+      "hand to {C:stars}Stars{} for every",
+      "round this has been held",
+      '(<a href="https://github.com/Aurelius7309/SixSuits/">Also try Six Suits!</a>)'
+    ],
+    image_url: "assets/1x/c_mf_magenta.png",
+    rarity: "Colour"
+  },
+  {
+    name: "Periwinkle",
+    text: [
+      "Converts a random card in",
+      "hand to {C:moons}Moons{} for every",
+      "round this has been held",
+      '(<a href="https://github.com/Aurelius7309/SixSuits/">Also try Six Suits!</a>)'
+    ],
+    image_url: "assets/1x/c_mf_periwinkle.png",
+    rarity: "Colour"
+  },
+  // {
+  //   name: "Purple",
+  //   text: [
+  //     "Converts a random card in",
+  //     "hand to {C:notes}Notes{} for every",
+  //     "round this has been held",
+  //     '(<a href="https://github.com/itayfeder/MusicalSuit">Also try the Musical Suit!</a>)'
+  //   ],
+  //   image_url: "assets/1x/c_mf_purple.png",
+  //   rarity: "Colour"
+  // },
+  {
     name: "Tan",
     text: [
       "Create a random {C:dark_edition}Negative{}",
@@ -979,6 +1034,12 @@ let cols = {
 
   ALCHEMICAL: "#C09D75",
   COLOURCARD: "#8867a5",
+  
+  FLEURONS: "#d6901a",
+  HALBERDS: "#993283",
+  STARS: "#DF509F",
+  MOONS: "#696076",
+  NOTES: "#D61BAF",
 }
 
 let rarities = {
