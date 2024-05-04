@@ -142,11 +142,9 @@ function Game:update(dt)
     self.C.SECONDARY_SET.ColourCard[3] = 0.4+0.2*(1+math.sin(self.TIMERS.REAL*1.5 + math.pi * 2 / 3))
     self.C.SECONDARY_SET.ColourCard[2] = 0.4+0.2*(1+math.sin(self.TIMERS.REAL*1.5 + math.pi * 4 / 3))
     
-    if G.ARGS.LOC_COLOURS == nil then
-        G.ARGS.LOC_COLOURS = {}
+    if G.ARGS.LOC_COLOURS ~= nil then
+        G.ARGS.LOC_COLOURS["colourcard"] = G.C.SECONDARY_SET.ColourCard
     end
-
-    G.ARGS.LOC_COLOURS["colourcard"] = G.C.SECONDARY_SET.ColourCard
 end
 
 local card_updateref = Card.update
@@ -956,12 +954,14 @@ function Card:use_consumeable(area, copier)
                             table.insert(temp_pool, v)
                         end
                     end
-                    local over = false
-                    local eligible_card = pseudorandom_element(temp_pool, pseudoseed("black"))
-                    local edition = {negative = true}
-                    eligible_card:set_edition(edition, true)
-                    check_for_unlock({type = 'have_edition'})
-                    self:juice_up(0.3, 0.5)
+                    if #temp_pool > 0 then
+                        local over = false
+                        local eligible_card = pseudorandom_element(temp_pool, pseudoseed("black"))
+                        local edition = {negative = true}
+                        eligible_card:set_edition(edition, true)
+                        check_for_unlock({type = 'have_edition'})
+                        self:juice_up(0.3, 0.5)
+                    end
                 return true end }))
             end
             delay(0.6)
