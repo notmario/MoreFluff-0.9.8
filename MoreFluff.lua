@@ -949,14 +949,25 @@ function Card:use_consumeable(area, copier)
             for i = 1, self.ability.extra do
                 G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
                     local temp_pool = {}
+                    local backup_pool = {}
                     for k, v in pairs(G.jokers.cards) do
                         if v.ability.set == 'Joker' and (not v.edition) then
                             table.insert(temp_pool, v)
+                        end
+                        if v.ability.set == 'Joker' then
+                            table.insert(backup_pool, v)
                         end
                     end
                     if #temp_pool > 0 then
                         local over = false
                         local eligible_card = pseudorandom_element(temp_pool, pseudoseed("black"))
+                        local edition = {negative = true}
+                        eligible_card:set_edition(edition, true)
+                        check_for_unlock({type = 'have_edition'})
+                        self:juice_up(0.3, 0.5)
+                    elseif #backup_pool > 0 then
+                        local over = false
+                        local eligible_card = pseudorandom_element(backup_pool, pseudoseed("black"))
                         local edition = {negative = true}
                         eligible_card:set_edition(edition, true)
                         check_for_unlock({type = 'have_edition'})
@@ -987,57 +998,7 @@ function Card:use_consumeable(area, copier)
                 (self.ability.name == "Magenta" and "mag") or
                 (self.ability.name == "Periwinkle" and "per") or
                 (self.ability.name == "Purple" and "pur")
-            
-            -- bunco's function isn't public. yay!!!!!!!
-            local function acknowledge(suit, initial)
 
-                if suit == 'Fleurons' then
-
-                    SMODS.Card:new_suit('Fleurons', 'exotic_cards', 'exotic_cards_high_contrast', { y = 0 }, 'exotic_cards_ui', 'exotic_cards_ui_high_contrast',
-                        { x = 0, y = 0 }, 'd6901a', 'dbb529')
-
-                    if G.GAME ~= nil and (G.GAME.Fleurons == false or G.GAME.Fleurons == nil) and initial == nil then
-
-                        G.GAME.Fleurons = true
-
-                        if G.GAME.first_exotic_suit == nil then
-                            G.GAME.first_exotic_suit = 'Fleurons'
-                        end
-
-                        sendDebugMessage('Acknowledged '..suit..'! (Initial:'..tostring(initial or 'false')..')')
-
-                    end
-
-                    if initial ~= nil and initial == true then
-
-                        sendDebugMessage('Acknowledged '..suit..'! (Initial:'..tostring(initial or 'false')..')')
-
-                    end
-
-                elseif suit == 'Halberds' then
-
-                    SMODS.Card:new_suit('Halberds', 'exotic_cards', 'exotic_cards_high_contrast', { y = 1 }, 'exotic_cards_ui', 'exotic_cards_ui_high_contrast',
-                        { x = 1, y = 0 }, '6e3c63', '993283')
-
-                    if G.GAME ~= nil and (G.GAME.Halberds == false or G.GAME.Halberds == nil) and initial == nil then
-
-                        G.GAME.Halberds = true
-
-                        if G.GAME.first_exotic_suit == nil then
-                            G.GAME.first_exotic_suit = 'Halberds'
-                        end
-
-                        sendDebugMessage('Acknowledged '..suit..'! (Initial:'..tostring(initial or 'false')..')')
-
-                    end
-
-                    if initial ~= nil and initial == true then
-
-                        sendDebugMessage('Acknowledged '..suit..'! (Initial:'..tostring(initial or 'false')..')')
-
-                    end
-                end
-            end
             if self.ability.name == "Amber" then
                 acknowledge("Fleurons")
             elseif self.ability.name == "Amethyst" then
@@ -2322,7 +2283,7 @@ function SMODS.INIT.MoreFluff()
             "Loaded Disk", "",
             { },
             { x = 0, y = 0 }, "",
-            2, 8, true, true, false, true
+            2, 8, true, true, false, false
         ),
         mf_mrloans = SMODS.Joker:new(
             "Mr. Loans", "",
@@ -4214,89 +4175,122 @@ function SMODS.INIT.MoreFluff()
     local challenges = G.CHALLENGES
 
 	G.localization.misc.challenge_names["c_mod_morefluff_testing"] = "testing challenge"
-    table.insert(G.CHALLENGES,#G.CHALLENGES+1,{
-        name = 'testing challenge', 
-        id = 'c_mod_morefluff_testing',
-        rules = {
-            custom = {
-            },
-            modifiers = {
-                {id = 'dollars', value = 9999},
-                {id = 'discards', value = 9999},
-                {id = 'hands', value = 9999},
-                {id = 'reroll_cost', value = -9999},
-                {id = 'joker_slots', value = 9999},
-                {id = 'consumable_slots', value = 9999},
-                {id = 'hand_size', value = 8},
-            }
-        },
-        jokers = {
-            -- {id = 'j_stencil'},
-            -- {id = 'j_stencil'},
-            -- {id = 'j_stencil'},
-            -- {id = 'j_stencil'},
-            {id = 'j_oops'},
-            {id = 'j_mf_cba'},
-            {id = 'j_joker'},
-            {id = 'j_mf_clipart'},
-            {id = 'j_mf_clipart'},
-            {id = 'j_mf_clipart'},
-            {id = 'j_mf_clipart'},
-            {id = 'j_mf_clipart'},
-            {id = 'j_mf_clipart'},
-            {id = 'j_mf_clipart'},
-            {id = 'j_mf_clipart'},
-            {id = 'j_mf_clipart'},
-            {id = 'j_mf_clipart'},
-            {id = 'j_mf_clipart'},
-            {id = 'j_mf_clipart'},
-            {id = 'j_mf_clipart'},
-            {id = 'j_mf_clipart'},
-            {id = 'j_mf_clipart'},
-        },
-        consumeables = {
-            {id = 'c_mf_amber'},
-        },
-        vouchers = {
-        },
-        deck = {
-            --enhancement = 'm_glass',
-            --edition = 'foil',
-            --gold_seal = true,
-            --yes_ranks = {['3'] = true,T = true},
-            --no_ranks = {['4'] = true},
-            --yes_suits = {S=true},
-            --no_suits = {D=true},
-            -- cards = {},
-            type = 'Challenge Deck'
-        },
-        restrictions = {
-            banned_cards = {
-                {id = 'p_standard_normal_1', ids = {
-                    'p_standard_normal_1','p_standard_normal_2','p_standard_normal_3','p_standard_normal_4','p_standard_jumbo_1','p_standard_jumbo_2','p_standard_mega_1','p_standard_mega_2',
-                }},
-                {id = 'p_buffoon_normal_1', ids = {
-                    'p_buffoon_normal_1','p_buffoon_normal_2','p_buffoon_jumbo_1','p_buffoon_mega_1'
-                }},
-                {id = 'p_spectral_normal_1', ids = {
-                    'p_spectral_normal_1','p_spectral_normal_2','p_spectral_jumbo_1','p_spectral_mega_1'
-                }},
-                {id = 'p_arcana_normal_1', ids = {
-                    'p_arcana_normal_1','p_arcana_normal_2','p_arcana_normal_3','p_arcana_normal_4','p_arcana_jumbo_1','p_arcana_jumbo_2','p_arcana_mega_1','p_arcana_mega_2',
-                }},
-                {id = 'p_celestial_normal_1', ids = {
-                    'p_celestial_normal_1','p_celestial_normal_2','p_celestial_normal_3','p_celestial_normal_4','p_celestial_jumbo_1','p_celestial_jumbo_2','p_celestial_mega_1','p_celestial_mega_2',
-                }},
-            },
-            banned_tags = {
-                -- {id = 'tag_garbage'},
-                -- {id = 'tag_handy'},
-            },
-            banned_other = {
+    -- table.insert(G.CHALLENGES,#G.CHALLENGES+1,{
+    --     name = 'testing challenge', 
+    --     id = 'c_mod_morefluff_testing',
+    --     rules = {
+    --         custom = {
+    --         },
+    --         modifiers = {
+    --             {id = 'dollars', value = 9999},
+    --             {id = 'discards', value = 9999},
+    --             {id = 'hands', value = 9999},
+    --             {id = 'reroll_cost', value = -9999},
+    --             {id = 'joker_slots', value = 9999},
+    --             {id = 'consumable_slots', value = 9999},
+    --             {id = 'hand_size', value = 8},
+    --         }
+    --     },
+    --     jokers = {
+    --         -- {id = 'j_stencil'},
+    --         -- {id = 'j_stencil'},
+    --         -- {id = 'j_stencil'},
+    --         -- {id = 'j_stencil'},
+    --         {id = 'j_joker'},
+    --         {id = 'j_joker'},
+    --         {id = 'j_joker'},
+    --         {id = 'j_oops'},
+    --         {id = 'j_oops'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --         {id = 'j_mf_paintcan'},
+    --     },
+    --     consumeables = {
+    --         {id = 'c_mf_white'},
+    --     },
+    --     vouchers = {
+    --     },
+    --     deck = {
+    --         --enhancement = 'm_glass',
+    --         --edition = 'foil',
+    --         --gold_seal = true,
+    --         --yes_ranks = {['3'] = true,T = true},
+    --         --no_ranks = {['4'] = true},
+    --         --yes_suits = {S=true},
+    --         --no_suits = {D=true},
+    --         -- cards = {},
+    --         type = 'Challenge Deck'
+    --     },
+    --     restrictions = {
+    --         banned_cards = {
+    --             {id = 'p_standard_normal_1', ids = {
+    --                 'p_standard_normal_1','p_standard_normal_2','p_standard_normal_3','p_standard_normal_4','p_standard_jumbo_1','p_standard_jumbo_2','p_standard_mega_1','p_standard_mega_2',
+    --             }},
+    --             {id = 'p_buffoon_normal_1', ids = {
+    --                 'p_buffoon_normal_1','p_buffoon_normal_2','p_buffoon_jumbo_1','p_buffoon_mega_1'
+    --             }},
+    --             {id = 'p_spectral_normal_1', ids = {
+    --                 'p_spectral_normal_1','p_spectral_normal_2','p_spectral_jumbo_1','p_spectral_mega_1'
+    --             }},
+    --             {id = 'p_arcana_normal_1', ids = {
+    --                 'p_arcana_normal_1','p_arcana_normal_2','p_arcana_normal_3','p_arcana_normal_4','p_arcana_jumbo_1','p_arcana_jumbo_2','p_arcana_mega_1','p_arcana_mega_2',
+    --             }},
+    --             {id = 'p_celestial_normal_1', ids = {
+    --                 'p_celestial_normal_1','p_celestial_normal_2','p_celestial_normal_3','p_celestial_normal_4','p_celestial_jumbo_1','p_celestial_jumbo_2','p_celestial_mega_1','p_celestial_mega_2',
+    --             }},
+    --         },
+    --         banned_tags = {
+    --             -- {id = 'tag_garbage'},
+    --             -- {id = 'tag_handy'},
+    --         },
+    --         banned_other = {
 
-            }
-        }
-    })
+    --         }
+    --     }
+    -- })
 end
 
 local card_calculate_dollar_bonus_ref = Card.calculate_dollar_bonus
@@ -4464,6 +4458,9 @@ function n_random_colour_rounds(n)
                 table.insert(temp_pool, v)
             end
         end
+        if #temp_pool == 0 then
+            break
+        end
         local _card = pseudorandom_element(temp_pool, pseudoseed("pink"))
         trigger_colour_end_of_round(_card)
     end
@@ -4607,16 +4604,31 @@ function create_card(_type, area, legendary, _rarity, skip_materialize, soulable
         'Amber',
         'Amethyst'
     }
+    local exotic_keys = {
+        'c_mf_amber',
+        'c_mf_amethyst',
+        'c_mf_yellow',
+        'UNAVAILABLE'
+    }
 
     if G.GAME.Fleurons ~= nil or G.GAME.Halberds ~= nil then
         allow_exotic = true
     end
 
     if not allow_exotic and has_value(exotic_table, card.ability.name) then
-        local pool = get_current_pool(_type, _rarity, legendary, key_append)
-        if #pool <= 3 then
-            -- fuck um you win
-            return card
+        local pool,_ = get_current_pool(_type, _rarity, legendary, key_append)
+        local non_exotic = false
+        for i,t in ipairs(pool) do
+            sendDebugMessage("asdf"..t)
+            if not has_value(exotic_keys,t) then
+                non_exotic = true
+                break
+            end
+        end
+        if not non_exotic then
+            -- but the joke is on you. huzzah!
+            card:remove()
+            return create_card(_type, area, legendary, _rarity, skip_materialize, soulable, "c_mf_yellow", key_append)
         end
         sendDebugMessage('Exotic card appeared! But the exotic suit did not exist.')
         sendDebugMessage('Rerolling...')
@@ -4709,6 +4721,16 @@ if freaky then
         
     end
 
+end
+
+local get_current_poolref = get_current_pool
+
+function get_current_pool(_type, _rarity, _legendary, _append)
+    local _pool, _pool2 = get_current_poolref(_type, _rarity, _legendary, _append)
+    if #_pool == 1 and _type == "Colour" then
+        _pool[1] = "c_mf_yellow"
+    end
+    return _pool, _pool2
 end
 
 -- local g_uidef_card_h_popup_ref = G.UIDEF.card_h_popup
