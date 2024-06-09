@@ -152,10 +152,10 @@ function Card:update(dt)
     card_updateref(self, dt)
     if G.STAGE == G.STAGES.RUN then
         if self.ability.name == 'Black' then
-            self.eligible_editionless_jokers = EMPTY(self.eligible_editionless_jokers)
+            self.eligible_nonnegative_jokers = EMPTY(self.eligible_nonnegative_jokers)
             for k, v in pairs(G.jokers.cards) do
-                if v.ability.set == 'Joker' and (not v.edition) then
-                    table.insert(self.eligible_editionless_jokers, v)
+                if v.ability.set == 'Joker' and (not v.edition or not v.edition.negative) then
+                    table.insert(self.eligible_nonnegative_jokers, v)
                 end
             end
         end
@@ -954,7 +954,7 @@ function Card:use_consumeable(area, copier)
                         if v.ability.set == 'Joker' and (not v.edition) then
                             table.insert(temp_pool, v)
                         end
-                        if v.ability.set == 'Joker' then
+                        if v.ability.set == 'Joker' and (not v.edition or not v.edition.negative) then
                             table.insert(backup_pool, v)
                         end
                     end
@@ -1174,7 +1174,7 @@ function Card:can_use_consumeable(any_state, skip_check)
             return true
         end
         if self.ability.name == "Black" then 
-            if next(self.eligible_editionless_jokers) then return true end
+            if next(self.eligible_nonnegative_jokers) then return true end
         end
         if self.ability.name == "Red" or self.ability.name == "Orange" or self.ability.name == "Deep Blue" or self.ability.name == "Seaweed" or 
         self.ability.name == "Amber" or self.ability.name == "Amethyst" or self.ability.name == "Magenta" or self.ability.name == "Periwinkle" or self.ability.name == "Purple" or
